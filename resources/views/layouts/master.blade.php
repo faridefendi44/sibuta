@@ -96,8 +96,8 @@
             </div>
         </nav>
         @yield('content')
-        <div class="bg-[#EAD196] text-center absolute h-16 font-semibold bottom-0 w-full ">
-            <h1 class="mt-5">Copyright Kejaksaan Negeri Sijunjung</h1>
+        <div class="bg-[#EAD196] text-center h-16 font-semibold bottom-0 w-full">
+            <h1 class="py-5">Copyright Kejaksaan Negeri Sijunjung</h1>
         </div>
     </div>
 </div>

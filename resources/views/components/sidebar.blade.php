@@ -13,7 +13,7 @@
     }
 </style>
 <div id="sidebar"
-    class="relative absolute   bg-[#BF3131] text-white   left-0 top-0  transition-all duration-300 ease-in-out">
+    class="relative z-30 absolute   bg-[#BF3131] text-white   left-0 top-0  transition-all duration-300 ease-in-out">
     <div class="p-10   bg-[#BF3131]   flex items-center h-16 p-4">
         <div class="w-2/3 text-md  w-full flex my-auto space-x-3">
             <img src="{{ URL::to('img/logo.png') }}" class="justify-end" alt="">

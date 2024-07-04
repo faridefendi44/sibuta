@@ -39,9 +39,9 @@
 </head>
 
 
-<body class="font-['Poppins']">
+<body class="font-['Poppins'] ">
     @include('components.sidebar')
-    <div class=" flex-1  bg-white">
+    <div class=" flex-1  bg-white relative">
         <nav id="navbar  " class=" bg-white border-b-2  h-16  border-gray-300 transition-all duration-500 ease-in-out">
             <div class="container mx-auto space-x-2 flex items-center justify-end">
                 <button id="dropdownUserAvatarButton" data-dropdown-toggle="dropdownAvatar"
@@ -93,15 +93,14 @@
                             out</a>
                     </div>
                 </div>
-
-
-
             </div>
         </nav>
         @yield('content')
+        <div class="bg-[#EAD196] text-center absolute h-16 font-semibold bottom-0 w-full ">
+            <h1 class="mt-5">Copyright Kejaksaan Negeri Sijunjung</h1>
+        </div>
     </div>
-
-    </div>
+</div>
 </body>
 
 </html>

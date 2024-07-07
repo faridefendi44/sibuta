@@ -10,15 +10,19 @@ class DashboardController extends Controller
 {
     public function index(Request $request)
     {
+        // Mendapatkan bulan yang dipilih dari request, default ke bulan saat ini
         $selectedMonth = $request->input('month', date('n'));
+
+        // Array untuk memetakan bulan numerik ke nama bulan dalam bahasa Indonesia
         $months = $this->getMonths();
+
+        // Mendapatkan data chart berdasarkan bulan yang dipilih
         $chartData = $this->getTamuChartData($selectedMonth);
         $suratData = $this->getSuratData();
         $tamuData = $this->getTamuData();
 
-        return view('dashboard.index', compact('chartData', 'suratData', 'tamuData' , 'selectedMonth', 'months'));
+        return view('dashboard.index', compact('chartData', 'suratData', 'tamuData', 'selectedMonth', 'months'));
     }
-
 
     private function getSuratData()
     {
@@ -29,15 +33,9 @@ class DashboardController extends Controller
             ->groupBy('month')
             ->get();
 
-        $bulanMap = [
-            1 => 'Januari', 2 => 'Februari', 3 => 'Maret', 4 => 'April',
-            5 => 'Mei', 6 => 'Juni', 7 => 'Juli', 8 => 'Agustus',
-            9 => 'September', 10 => 'Oktober', 11 => 'November', 12 => 'Desember'
-        ];
-
         foreach ($suratData as $data) {
             $month = $data->month;
-            $bulan = $bulanMap[$month];
+            $bulan = $bulanLabels[$month - 0]; // Menggunakan indeks array yang benar
             $suratChartData[$bulan] = $data->count;
         }
 
@@ -53,15 +51,9 @@ class DashboardController extends Controller
             ->groupBy('month')
             ->get();
 
-        $bulanMap = [
-            1 => 'Januari', 2 => 'Februari', 3 => 'Maret', 4 => 'April',
-            5 => 'Mei', 6 => 'Juni', 7 => 'Juli', 8 => 'Agustus',
-            9 => 'September', 10 => 'Oktober', 11 => 'November', 12 => 'Desember'
-        ];
-
         foreach ($tamuData as $data) {
             $month = $data->month;
-            $bulan = $bulanMap[$month];
+            $bulan = $bulanLabels[$month - 0]; // Menggunakan indeks array yang benar
             $tamuChartData[$bulan] = $data->count;
         }
 
@@ -71,15 +63,16 @@ class DashboardController extends Controller
     private function getMonths()
     {
         return [
-            'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni',
-            'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'
+            1 => 'Januari', 2 => 'Februari', 3 => 'Maret', 4 => 'April',
+            5 => 'Mei', 6 => 'Juni', 7 => 'Juli', 8 => 'Agustus',
+            9 => 'September', 10 => 'Oktober', 11 => 'November', 12 => 'Desember'
         ];
     }
 
     private function getTamuChartData($selectedMonth)
     {
         $tamuData = Tamu::selectRaw('target_tamu, COUNT(*) as count')
-            ->whereMonth('created_at', $selectedMonth)
+            ->whereRaw('MONTH(STR_TO_DATE(tanggal_bertamu, "%d/%m/%Y")) = ?', [$selectedMonth])
             ->groupBy('target_tamu')
             ->get();
 

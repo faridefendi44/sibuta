@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('content')
-    <div class="w-4/5 mt-10  mx-auto space-y-10">
+    <div class="lg:w-[90%] px-2 mt-10  mx-auto space-y-10">
         <div class="search ">
             <form action="{{ route('tamu.search') }}" method="GET" class="flex  items-center  mx-auto">
                 <label for="simple-search" class="sr-only">Search</label>
@@ -20,22 +20,19 @@
                 </button>
             </form>
         </div>
-
         <div class="">
             <a href="{{ route('tamu.create') }}"
-                class="flex py-3 px-6 w-fit space-x-3 bg-[#A94438] text-white rounded-xl ">
+                class="flex py-3 px-2 w-fit space-x-3 bg-[#A94438] text-white rounded-xl ">
                 <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
                         d="M14.0001 23.3332V13.9998M14.0001 13.9998V4.6665M14.0001 13.9998H23.3334M14.0001 13.9998H4.66675"
                         stroke="white" stroke-width="2" stroke-linecap="round" />
                 </svg>
-                <span class="mt-1">Tambah Pengajuan Tamu</span>
+                <span class="mt-1">Tambah Tamu</span>
             </a>
         </div>
 
         <div class="">
-
-
             <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
                 <table class="w-full text-sm text-left rtl:text-right text-gray-500 bg-[#D9D9D9]">
                     <thead class="text-xs text-gray-700 uppercase bg-[#D9D9D9]  ">

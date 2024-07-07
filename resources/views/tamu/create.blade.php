@@ -6,7 +6,7 @@
         }
     </style>
     <div class="">
-        <div class="lg:flex  lg:space-x-10 justify-center py-10 px-5 mx-auto ">
+        <div class="lg:flex  lg:space-x-10 justify-center py-10  px-2 mx-auto ">
 
             <div class="bg-[#EAD196] lg:w-4/5  rounded-lg p-5">
                 <h1  class="lg:text-xl font-semibold text-center py-10">Silakan isi form dibawah ini untuk melakukan pengiriman surat</h1>

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
-    <div class=" h-screen  mx-auto my-auto flex justify-center font-['Poppins']">
-        <div class="mx-auto my-auto justify-center w-1/2">
+    <div class=" h-screen border-black  mx-auto my-auto flex justify-center font-['Poppins']">
+        <div class="mx-auto my-auto justify-center w-3/4 lg:w-1/2">
             <h1 class="text-3xl font-semibold">Login</h1>
             <form class="py-10 space-y-5" action="{{route('actionlogin')}}" method="POST">
                 @csrf

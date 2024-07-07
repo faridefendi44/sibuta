@@ -4,10 +4,10 @@
         <div class="lg:flex  lg:space-x-10 justify-center py-10 px-5 mx-auto ">
 
             <div class="bg-[#EAD196] lg:w-4/5  rounded-lg p-5">
-                <h1 class="lg:text-xl font-semibold  py-10">
+                <h1 class="lg:text-xl   font-semibold  py-10">
                     Data Tamu
                 </h1>
-                <div class="w-1/2 space-y-5 py-10">
+                <div class="lg:w-1/2 space-y-5 py-10">
                     <div class="grid md:grid-cols-2 justify-center gap-x-20 ">
                         <h1 class="font-semibold">Nama</h1>
                         <h1 class="flex md:text-left text-center"><span class="hidden md:block">:</span>

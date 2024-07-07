@@ -5,25 +5,26 @@
             display: none;
         }
     </style>
-    <div class="h-screen">
-        <div class="lg:flex  lg:space-x-10 justify-center mt-36 px-5 mx-auto ">
+    <div class="">
+        <div class="lg:flex  lg:space-x-10 justify-center mt-36 px-2 mx-auto  ">
 
             <div class="bg-[#EAD196] lg:w-1/2 rounded-lg p-5">
                 <h1 class="text-lg font-semibold">Pengiriman Surat</h1>
                 <div class="h-1 w-1/2 bg-[#A98F03]"></div>
-                <div class="flex py-5 items-center text-lg space-x-5 justify-between">
+                <div class="lg:flex py-5 items-center text-lg lg:space-x-5 justify-between">
                     <h1>
                         Kirim Surat Permohonan
                     </h1>
-                    <button class="px-8 py-3 bg-[#ebca7d] rounded-lg toggleButton">
+                    <button class="px-2 py-3 bg-[#ebca7d] rounded-lg toggleButton">
                         Selengkapnya
                     </button>
                 </div>
                 <div class="pl-10 text-justify hidden">
                     <p>
-                        Dengan SIBUTA, Anda dapat membuat janji bertamu secara online. Cukup isi formulir yang tersedia dan
-                        tentukan waktu kunjungan Anda. Pihak yang berkepentingan akan menerima notifikasi dan dapat
-                        mengonfirmasi janji temu Anda melalui WhatsApp atau email.
+                        Mengirim surat permohonan kini lebih mudah dengan SIBUTA. Anda dapat mengirim surat elektronik
+                        kepada pihak yang berkepentingan langsung melalui platform kami. Pihak yang berkepentingan akan
+                        menerima notifikasi dan dapat mem-validasi surat Anda melalui WhatsApp atau email.
+
                     </p>
                 </div>
                 @guest

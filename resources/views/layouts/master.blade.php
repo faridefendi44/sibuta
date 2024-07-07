@@ -41,14 +41,13 @@
 
 <body class="font-['Poppins'] ">
     @include('components.sidebar')
-    <div class=" flex-1  bg-white relative">
-        <nav id="navbar  " class=" bg-white border-b-2  h-16  border-gray-300 transition-all duration-500 ease-in-out">
-            <div class="container mx-auto space-x-2 flex items-center justify-end">
+    <div class=" flex-1  bg-white relative pb-20  w-20">
+        <nav id="navbar  " class=" bg-white border-b-2 z-10 h-16 w-full  border-gray-300 transition-all duration-500 ease-in-out">
+            <div class="mx-auto space-x-2 flex items-center justify-end right-2 md:right-10 mr-10  absolute left-0 w-full z-20">
                 <button id="dropdownUserAvatarButton" data-dropdown-toggle="dropdownAvatar"
                     class="flex text-sm mt-2 bg-white rounded-lg px-2 py-2 md:me-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
                     type="button">
                     <span class="sr-only">Open user menu</span>
-                    {{-- <img class="w-10 h-10 flex-shrink-0 object-contain object-fill" src="assets/img/logo.png" alt="user photo"> --}}
                     <svg class="w-5 h-5 mx-1" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path
                             d="M7 8C7 5.23858 9.23858 3 12 3C14.7614 3 17 5.23858 17 8C17 10.7614 14.7614 13 12 13C9.23858 13 7 10.7614 7 8ZM12 11C13.6569 11 15 9.65685 15 8C15 6.34315 13.6569 5 12 5C10.3431 5 9 6.34315 9 8C9 9.65685 10.3431 11 12 11Z"
@@ -64,7 +63,6 @@
                     </svg>
                 </button>
 
-                <!-- Dropdown menu -->
                 <div id="dropdownAvatar"
                     class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-60 dark:bg-gray-700 dark:divide-gray-600">
 
@@ -96,7 +94,8 @@
             </div>
         </nav>
         @yield('content')
-        <div class="bg-[#EAD196] text-center h-16 font-semibold bottom-0 w-full">
+
+        <div class="bg-[#EAD196] text-center h-16 font-semibold absolute  bottom-0 w-full">
             <h1 class="py-5">Copyright Kejaksaan Negeri Sijunjung</h1>
         </div>
     </div>

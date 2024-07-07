@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('content')
-    <div class="w-4/5 mt-10  mx-auto space-y-10">
+    <div class="lg:w-[90%] px-2 mt-10  mx-auto space-y-10">
         <div class="search ">
 
             <form action="{{ route('tamu.search') }}" method="GET" class="flex  items-center  mx-auto">

@@ -5,16 +5,16 @@
             display: none;
         }
     </style>
-    <div class="h-screen">
-        <div class="lg:flex  lg:space-x-10 justify-center mt-36 px-5 mx-auto ">
+    <div class="">
+        <div class="lg:flex  lg:space-x-10 justify-center mt-36 px-2 mx-auto ">
             <div class="bg-[#EAD196] lg:w-1/2  rounded-lg p-5 relative">
                 <h1 class="text-lg font-semibold">Permohonan Bertamu</h1>
                 <div class="h-1 w-1/2 bg-[#A98F03]"></div>
-                <div class="flex py-5 items-center text-lg space-x-5 justify-between">
+                <div class="lg:flex  py-5 items-center text-lg lg:space-x-5 justify-between">
                     <h1>
                         Atur Janji Tamu
                     </h1>
-                    <button class="px-8 py-3 bg-[#ebca7d] rounded-lg toggleButton">
+                    <button class="px-2 w-fit py-3 bg-[#ebca7d] rounded-lg toggleButton">
                         Selengkapnya
                     </button>
                 </div>

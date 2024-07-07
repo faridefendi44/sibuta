@@ -66,13 +66,20 @@
                                 required>
                         </div>
                     </div>
-                    <div class="md:flex  md:space-x-5  md:justify-between my-auto items-center md:w-full">
+                    <div class="md:flex  md:space-x-5  md:justify-between my-auto items-center w-full">
                         <label for="">Tamu yang ingin ditemui</label>
-                        <div class="relative md:w-3/5 ">
-                            <input value="{{$tamu->target_tamu}}" id='test'  autocomplete="off" type="text" name="target_tamu"
-                                placeholder="Select date"
-                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                required>
+                        <div class="md:w-3/5 ">
+                            <select id="countries" name="target_tamu" required
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                <option disabled>Pilih Tamu</option>
+                                <option selected value="{{ $tamu->target_tamu }}">{{ $tamu->target_tamu}}
+                                </option>
+                                @foreach ($data as $pegawai)
+                                    <option value="{{ $pegawai['nama'] }}">{{ $pegawai['nama'] }} - {{ $pegawai['jabatan'] }}
+                                    </option>
+                                @endforeach
+
+                            </select>
                         </div>
                     </div>
                     <div class="md:flex  md:space-x-5  md:justify-between my-auto items-center md:w-full">

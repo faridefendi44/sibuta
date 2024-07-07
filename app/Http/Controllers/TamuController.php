@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Tamu;
+use Illuminate\Support\Facades\File;
 
 class TamuController extends Controller
 {
@@ -36,7 +37,11 @@ class TamuController extends Controller
     }
     public function create()
     {
-        return view('tamu.create');
+        $jsonString = File::get(storage_path('app/public/pegawai.json'));
+        $data = json_decode($jsonString, true);
+
+        return view('tamu.create', ['data' => $data]);
+        // return view('tamu.create');
     }
     public function store(Request $request)
     {
@@ -69,8 +74,10 @@ class TamuController extends Controller
     public function edit($id)
     {
         $tamu = Tamu::findOrFail($id);
+        $jsonString = File::get(storage_path('app/public/pegawai.json'));
+        $data = json_decode($jsonString, true);
 
-        return view('tamu.edit', compact('tamu'));
+        return view('tamu.edit', compact('tamu', 'data'));
     }
     public function update(Request $request, $id)
     {
@@ -170,5 +177,13 @@ class TamuController extends Controller
         $tamu = Tamu::findOrFail($id);
         $tamu->delete();
         return redirect()->route('tamu.data');
+    }
+
+    public function showData()
+    {
+        $jsonString = File::get(storage_path('app/public/pegawai.json'));
+        $data = json_decode($jsonString, true);
+
+        return view('tamu.create', ['data' => $data]);
     }
 }

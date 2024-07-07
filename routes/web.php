@@ -25,6 +25,7 @@ Route::get('/', function () {
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
 
 Route::get('login',[AuthController::class, 'index'])->name('login');
+Route::get('getPegawai',[TamuController::class, 'showData'])->name('getPegawai');
 Route::post('actionlogin', [AuthController::class, 'actionlogin'])->name('actionlogin');
 Route::get('actionlogout', [AuthController::class, 'actionlogout'])->name('actionlogout');
 

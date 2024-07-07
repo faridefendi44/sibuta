@@ -60,7 +60,7 @@
                     <div class="md:flex  md:space-x-5  md:justify-between my-auto items-center md:w-full">
                         <label for="">Nama Pengirim</label>
                         <div class="relative md:w-3/5 ">
-                            <input value="{{$surat->pengirim}}" id='test' datepicker autocomplete="off" type="text" name="pengirim"
+                            <input value="{{$surat->pengirim}}" id='test' autocomplete="off" type="text" name="pengirim"
                                 placeholder="Select date"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                 required>
@@ -69,7 +69,7 @@
                     <div class="md:flex  md:space-x-5  md:justify-between my-auto items-center md:w-full">
                         <label for="">Email</label>
                         <div class="relative md:w-3/5 ">
-                            <input value="{{$surat->email}}" id='test' datepicker autocomplete="off" type="text" name="email"
+                            <input value="{{$surat->email}}" id='test' autocomplete="off" type="text" name="email"
                                 placeholder="Select date"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                 required>
@@ -78,7 +78,16 @@
                     <div class="md:flex  md:space-x-5  md:justify-between my-auto items-center md:w-full">
                         <label for="">Nomor Whatsapp</label>
                         <div class="relative md:w-3/5 ">
-                            <input value="{{$surat->no_wa}}" id='test' datepicker autocomplete="off" type="text" name="no_wa"
+                            <input value="{{$surat->no_wa}}" id='test' autocomplete="off" type="text" name="no_wa"
+                                placeholder="Select date"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                required>
+                        </div>
+                    </div>
+                    <div class="md:flex  md:space-x-5  md:justify-between my-auto items-center md:w-full">
+                        <label for="">Asal Surat</label>
+                        <div class="relative md:w-3/5 ">
+                            <input value="{{$surat->asal_surat}}" id='test' autocomplete="off" type="text" name="asal_surat"
                                 placeholder="Select date"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                 required>
@@ -87,7 +96,7 @@
                     <div class="md:flex  md:space-x-5  md:justify-between my-auto items-center md:w-full">
                         <label for="">Perihal Surat</label>
                         <div class="relative md:w-3/5 ">
-                            <input value="{{$surat->perihal}}" id='test' datepicker autocomplete="off" type="text" name="perihal"
+                            <input value="{{$surat->perihal}}" id='test'  autocomplete="off" type="text" name="perihal"
                                 placeholder="Select date"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                 required>

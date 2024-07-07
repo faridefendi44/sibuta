@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('pengirim');
             $table->string('email');
             $table->string('no_wa');
+            $table->string('asal_surat');
             $table->string('perihal');
             $table->string('lampiran');
             $table->string('catatan')->nullable();

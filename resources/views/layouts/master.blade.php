@@ -15,7 +15,7 @@
         rel="stylesheet">
     <script src="/assets/library/jquery.js"></script>
     <script src="/assets/library/datepicker.js"></script>
-
+    <script src="/assets/library/chart.js"></script>
     <script src="/assets/library/datatables.js"></script>
     <link rel="stylesheet" href="/assets/library/datatables.css">
 

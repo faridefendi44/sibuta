@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TamuController;
 use App\Http\Controllers\SuratController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DashboardController;
 
 
 /*
@@ -20,9 +21,8 @@ use App\Http\Controllers\AuthController;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/dashboard', function(){
-    return view('dashboard.index');
-});
+
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
 
 Route::get('login',[AuthController::class, 'index'])->name('login');
 Route::post('actionlogin', [AuthController::class, 'actionlogin'])->name('actionlogin');

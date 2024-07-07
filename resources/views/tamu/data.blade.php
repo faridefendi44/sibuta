@@ -65,7 +65,7 @@
                             <tr class="bg-[#D9D9D9] border-b    ">
                                 <th scope="row"
                                     class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                    1
+                                    {{ $loop->iteration }}
                                 </th>
                                 <td class="px-6 py-4">
                                     {{ $data->nama }}

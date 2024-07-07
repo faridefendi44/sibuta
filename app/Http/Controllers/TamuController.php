@@ -12,12 +12,10 @@ class TamuController extends Controller
     {
         $keyword = $request->input('keyword');
 
-        // Validasi input keyword
         $validatedData = $request->validate([
             'keyword' => 'required|string|max:255',
         ]);
 
-        // Melakukan pencarian tamu berdasarkan semua atribut
         $tamus = Tamu::where('nama', 'LIKE', '%' . $keyword . '%')
             ->orWhere('asal_instansi', 'LIKE', '%' . $keyword . '%')
             ->orWhere('tanggal_bertamu', 'LIKE', '%' . $keyword . '%')
@@ -29,7 +27,6 @@ class TamuController extends Controller
             ->orWhere('id', 'LIKE', '%' . $keyword . '%')
             ->get();
 
-        // Mengembalikan hasil pencarian ke tampilan
         return view('tamu.data', compact('tamus'));
     }
 
@@ -54,10 +51,12 @@ class TamuController extends Controller
             'keperluan' => 'required|string|max:255',
         ]);
 
-        // Membuat instance Tamu dan menyimpan data ke database
         $tamu = Tamu::create($validatedData);
 
-        // Mengembalikan response berhasil
+        if (auth()->check()) {
+            return redirect()->route('tamu.data');
+        }
+
         return view('components.succes');
     }
     public function show($id)

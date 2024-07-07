@@ -13,12 +13,10 @@ class SuratController extends Controller
     {
         $keyword = $request->input('keyword');
 
-        // Validasi input keyword
         $validatedData = $request->validate([
             'keyword' => 'required|string|max:255',
         ]);
 
-        // Melakukan pencarian tamu berdasarkan semua atribut
         $surats = Surat::where('pengirim', 'LIKE', '%' . $keyword . '%')
             ->orWhere('email', 'LIKE', '%' . $keyword . '%')
             ->orWhere('no_wa', 'LIKE', '%' . $keyword . '%')
@@ -26,7 +24,6 @@ class SuratController extends Controller
             ->orWhere('id', 'LIKE', '%' . $keyword . '%')
             ->get();
 
-        // Mengembalikan hasil pencarian ke tampilan
         return view('surat.data', compact('surats'));
     }
     public function index()
@@ -73,7 +70,10 @@ class SuratController extends Controller
         $surat->lampiran = $lampiran;
         $surat->save();
 
-        // Mengembalikan response berhasil
+        if (auth()->check()) {
+            return redirect()->route('surat.data');
+        }
+
         return view('components.succes');
     }
     public function edit($id)

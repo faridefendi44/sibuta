@@ -47,6 +47,7 @@ class SuratController extends Controller
             'email' => 'required|string|email|max:255',
             'no_wa' => 'required|string|max:15',
             'perihal' => 'required|string|max:255',
+            'asal_surat' => 'required|string|max:255',
             'lampiran.*' => 'required|file|mimes:pdf,doc,docx,jpg,png',
         ]);
 
@@ -65,6 +66,7 @@ class SuratController extends Controller
         $surat = new Surat();
         $surat->pengirim = $validatedData['pengirim'];
         $surat->email = $validatedData['email'];
+        $surat->asal_surat = $validatedData['asal_surat'];
         $surat->no_wa = $validatedData['no_wa'];
         $surat->perihal = $validatedData['perihal'];
         $surat->lampiran = $lampiran;
@@ -89,6 +91,7 @@ class SuratController extends Controller
             'email' => 'required|string|email|max:255',
             'no_wa' => 'required|string|max:15',
             'perihal' => 'required|string|max:255',
+            'asal_surat' => 'required|string|max:255',
             'lampiran.*' => 'nullable|file|mimes:pdf,doc,docx,jpg,png',
         ]);
 
@@ -108,6 +111,7 @@ class SuratController extends Controller
 
         $surat->pengirim = $validatedData['pengirim'];
         $surat->email = $validatedData['email'];
+        $surat->asal_surat = $validatedData['asal_surat'];
         $surat->no_wa = $validatedData['no_wa'];
         $surat->perihal = $validatedData['perihal'];
         $surat->lampiran = $lampiran;
@@ -131,6 +135,7 @@ class SuratController extends Controller
         $no_wa = $surat->no_wa;
         $pengirim = $surat->pengirim;
         $email = $surat->email;
+        $asal_surat = $surat->asal_surat;
         $perihal = $surat->perihal;
         $lampiran = $surat->lampiran;
         $catatan = $surat->catatan;
@@ -140,6 +145,7 @@ class SuratController extends Controller
         Pengirim: $pengirim\n
         Email: $email\n
         No WA: $no_wa\n
+        Asal Surat: $asal_surat\n
         Perihal: $perihal\n
         Lampiran: $lampiran\n
         Status: $status\n
@@ -157,6 +163,7 @@ class SuratController extends Controller
         $no_wa = $surat->no_wa;
         $pengirim = $surat->pengirim;
         $email = $surat->email;
+        $asal_surat = $surat->asal_surat;
         $perihal = $surat->perihal;
         $lampiran = $surat->lampiran;
         $status = $surat->status;
@@ -165,8 +172,10 @@ class SuratController extends Controller
         Pengirim: $pengirim\n
         Email: $email\n
         No WA: $no_wa\n
+        Asal Surat: $asal_surat\n
         Perihal: $perihal\n
         Status: $status\n
+        Lampiran: $lampiran\n
         ");
 
         $whatsappUrl = "https://api.whatsapp.com/send?phone=$no_wa&text=$message";

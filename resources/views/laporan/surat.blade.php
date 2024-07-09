@@ -1,17 +1,41 @@
 @extends('layouts.master')
 @section('content')
-    <div class="lg:w-[90%] px-2 mt-10  mx-auto space-y-10">
-
-        <form method="GET" action="{{ route('laporanSurat.index') }}">
-            <label for="start_date">Mulai Tanggal:</label>
-            <input type="date" id="start_date" name="start_date">
-
-            <label for="end_date">Sampai Tanggal:</label>
-            <input type="date" id="end_date" name="end_date">
-
-            <button class="bg-[#EAD196] py-2 px-5">Filter</button>
-            <a href="{{route('suratDownload.index')}}">Print</a>
+    <div class="lg:w-[90%]  px-2 mt-10  mx-auto space-y-10">
+        <form id="filterForm" class="flex space-x-10" method="GET" action="{{ route('laporanSurat.index') }}">
+            <div class="">
+                <label for="start_date">Mulai Tanggal:</label>
+                <input type="date" id="start_date" name="start_date">
+            </div>
+            <div class="">
+                <label for="end_date">Sampai Tanggal:</label>
+                <input type="date" id="end_date" name="end_date">
+            </div>
+            <input type="hidden" id="isPrint" name="isPrint" value="0">
+            <div class="flex items-center space-x-5">
+                <button  class="bg-[#7D0A0A] text-white py-2 px-5">Filter</button>
+                <button type="button" id="printButton" class="flex bg-[#EAD196] py-2 px-5">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M18 17.25H19.125C19.6218 17.2485 20.0979 17.0505 20.4492 16.6992C20.8005 16.3479 20.9985 15.8718 21 15.375V7.875C20.9985 7.37818 20.8005 6.90212 20.4492 6.55081C20.0979 6.1995 19.6218 6.00148 19.125 6H4.875C4.37818 6.00148 3.90212 6.1995 3.55081 6.55081C3.1995 6.90212 3.00148 7.37818 3 7.875V15.375C3.00148 15.8718 3.1995 16.3479 3.55081 16.6992C3.90212 17.0505 4.37818 17.2485 4.875 17.25H6" stroke="#7D0A0A" stroke-width="1.5" stroke-linejoin="round"/>
+                        <path d="M16.86 11.25H7.14C6.5104 11.25 6 11.7604 6 12.39V19.86C6 20.4896 6.5104 21 7.14 21H16.86C17.4896 21 18 20.4896 18 19.86V12.39C18 11.7604 17.4896 11.25 16.86 11.25Z" stroke="#7D0A0A" stroke-width="1.5" stroke-linejoin="round"/>
+                        <path d="M18 6V4.875C17.9985 4.37818 17.8005 3.90212 17.4492 3.55081C17.0979 3.1995 16.6218 3.00148 16.125 3H7.875C7.37818 3.00148 6.90212 3.1995 6.55081 3.55081C6.1995 3.90212 6.00148 4.37818 6 4.875V6" stroke="#7D0A0A" stroke-width="1.5" stroke-linejoin="round"/>
+                        <path d="M18.375 9.75C18.9963 9.75 19.5 9.24632 19.5 8.625C19.5 8.00368 18.9963 7.5 18.375 7.5C17.7537 7.5 17.25 8.00368 17.25 8.625C17.25 9.24632 17.7537 9.75 18.375 9.75Z" fill="#7D0A0A"/>
+                    </svg>
+                    <span>Print</span>
+                </button>
+            </div>
         </form>
+
+        <script>
+            document.getElementById('printButton').addEventListener('click', function() {
+                const form = document.getElementById('filterForm');
+                document.getElementById('isPrint').value = 1;
+                form.action = '{{ route('suratDownload.index') }}';
+                form.submit();
+            });
+        </script>
+
+
+
         <div class="">
 
 
@@ -72,133 +96,7 @@
 
                                 </td>
                             </tr>
-                            <div id="popup-approve-{{ $data->id }}" tabindex="-1" aria-labelledby="modal-title"
-                                role="dialog" aria-modal="true" id="interestModal"
-                                class="hidden overflow-y-auto overflow-x-hidden fixed top-80 right-0 left-0 md:left-[35%] z-50 justify-center items-center w-full md:inset-10 h-[calc(100%-1rem)] max-h-full">
-                                <div class="relative p-4 w-full max-w-md max-h-full">
-                                    <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-                                        <button type="button"
-                                            class="absolute top-3 end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
-                                            data-modal-hide="popup-approve-{{ $data->id }}">
-                                            <svg class="w-5 h-5 closeModal " aria-hidden="true"
-                                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
-                                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                                    stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
-                                            </svg>
-                                            <span class="sr-only">Close modal</span>
-                                        </button>
-                                        <div class="p-4 md:p-5 text-center">
-                                            <svg class="mx-auto mb-4 text-gray-400 w-12 h-12 dark:text-gray-200"
-                                                aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                                                viewBox="0 0 20 20">
-                                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                                    stroke-width="2"
-                                                    d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-                                            </svg>
-                                            <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Anda
-                                                yakin ingin menyetujui
-                                                surat ini?</h3>
-                                            <form action="{{ route('surat.approve', $data->id) }}" method="POST">
-                                                @csrf
-                                                @method('PUT')
-                                                <button data-modal-hide="popup-modal" type="submit"
-                                                    class="text-white bg-blue-600 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center">
-                                                    Setujui
-                                                </button>
-                                                <button data-modal-hide="popup-approve-{{ $data->id }}" type="button"
-                                                    class="closeModal py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
-                                                    Batal</button>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
 
-                            <div id="popup-reject-{{ $data->id }}" tabindex="-1" aria-labelledby="modal-title"
-                                role="dialog" aria-modal="true" id="interestReject"
-                                class="hidden overflow-y-auto overflow-x-hidden fixed top-80 right-0 left-0 md:left-[35%] z-50 justify-center items-center w-full md:inset-10 h-[calc(100%-1rem)] max-h-full">
-                                <div class="relative p-4 w-full max-w-md max-h-full">
-                                    <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-                                        <button type="button"
-                                            class="absolute top-3 end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
-                                            data-modal-hide="popup-reject-{{ $data->id }}">
-                                            <svg class="w-5 h-5 closeModal " aria-hidden="true"
-                                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
-                                                <path stroke="currentColor" stroke-linecap="round"
-                                                    stroke-linejoin="round" stroke-width="2"
-                                                    d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
-                                            </svg>
-                                            <span class="sr-only">Close modal</span>
-                                        </button>
-                                        <div class="p-4 md:p-5 text-center">
-                                            <svg class="mx-auto mb-4 text-gray-400 w-12 h-12 dark:text-gray-200"
-                                                aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                                                viewBox="0 0 20 20">
-                                                <path stroke="currentColor" stroke-linecap="round"
-                                                    stroke-linejoin="round" stroke-width="2"
-                                                    d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-                                            </svg>
-                                            <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Apakah
-                                                Anda yakin ingin
-                                                menolak surat ini? </h3>
-                                            <form action="{{ route('surat.reject', $data->id) }}" method="POST">
-                                                @csrf
-                                                @method('PUT')
-                                                <input type="text" name="catatan">
-                                                <button data-modal-hide="popup-modal" type="submit"
-                                                    class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center">
-                                                    Tolak
-                                                </button>
-                                                <button data-modal-hide="popup-reject-{{ $data->id }}" type="button"
-                                                    class="closeModal py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
-                                                    Batal</button>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div id="popup-delete-{{ $data->id }}" tabindex="-1" aria-labelledby="modal-title"
-                                role="dialog" aria-modal="true" id="interestDelete"
-                                class="hidden overflow-y-auto overflow-x-hidden fixed top-80 right-0 left-0 md:left-[35%] z-50 justify-center items-center w-full md:inset-10 h-[calc(100%-1rem)] max-h-full">
-                                <div class="relative p-4 w-full max-w-md max-h-full">
-                                    <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-                                        <button type="button"
-                                            class="absolute top-3 end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
-                                            data-modal-hide="popup-delete-{{ $data->id }}">
-                                            <svg class="w-5 h-5 closeModal " aria-hidden="true"
-                                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
-                                                <path stroke="currentColor" stroke-linecap="round"
-                                                    stroke-linejoin="round" stroke-width="2"
-                                                    d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
-                                            </svg>
-                                            <span class="sr-only">Close modal</span>
-                                        </button>
-                                        <div class="p-4 md:p-5 text-center">
-                                            <svg class="mx-auto mb-4 text-gray-400 w-12 h-12 dark:text-gray-200"
-                                                aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                                                viewBox="0 0 20 20">
-                                                <path stroke="currentColor" stroke-linecap="round"
-                                                    stroke-linejoin="round" stroke-width="2"
-                                                    d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-                                            </svg>
-                                            <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Apakah
-                                                Anda yakin ingin
-                                                menghapus surat ini? </h3>
-                                            <form action="{{ route('surat.delete', $data->id) }}" method="POST">
-                                                @csrf
-                                                <button type="submit"
-                                                    class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center">
-                                                    Hapus
-                                                </button>
-                                                <button data-modal-hide="popup-delete-{{ $data->id }}" type="button"
-                                                    class="closeModal py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
-                                                    Batal</button>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                         @endforeach
                     </tbody>
                 </table>
@@ -207,30 +105,4 @@
 
     </div>
 
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $('#approve').on('click', function(e) {
-                $('#overlay, #interestModal').removeClass('hidden');
-            });
-            $('.closeModal').on('click', function(e) {
-                $('#overlay, #interestModal').addClass('hidden');
-            });
-        });
-        $(document).ready(function() {
-            $('#reject').on('click', function(e) {
-                $('#overlay, #interestReject').removeClass('hidden');
-            });
-            $('.closeModal').on('click', function(e) {
-                $('#overlay, #interestReject').addClass('hidden');
-            });
-        });
-        $(document).ready(function() {
-            $('#delete').on('click', function(e) {
-                $('#overlay, #interestDelete').removeClass('hidden');
-            });
-            $('.closeModal').on('click', function(e) {
-                $('#overlay, #interestDelete').addClass('hidden');
-            });
-        });
-    </script>
 @endsection

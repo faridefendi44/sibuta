@@ -35,7 +35,7 @@
         <ul class="mt-4 space-y-5 text-white   " id="sidebarMenu">
 
             <li>
-                <a href="{{ url('dashboard') }}"
+                <a href="{{ url('/') }}"
                     class="parent  {{ Request::path() == 'dashboard' ? 'bg-[#7D0A0A]' : '' }}  hover:bg-[#7D0A0A]  -ml-2 p-4 w-auto h-12 mt-2 flex items-center rounded-md duration-300 cursor-pointer   font-semibold shadow relative">
                     <h1
                         class="{{ Request::path() == 'dashboard' ? 'active' : 'opacity-0' }}  bg-red-400
@@ -132,7 +132,7 @@
                     <span id="show" class="ml-4">Laporan</span>
                 </a>
                 <div id="laporanDropdown" class="hidden">
-                    <a href="#"
+                    <a href="{{route('laporanTamu.index')}}"
                         class="parent  {{ Request::path() == 'laporan' ? 'bg-[#7D0A0A]' : '' }}  hover:bg-[#7D0A0A]  -ml-2 p-4 w-auto h-12 mt-2 flex items-center rounded-md duration-300 cursor-pointer   font-semibold shadow relative block ml-5">Data
                         Tamu</a>
                     <a href="{{ route('laporanSurat.index') }}"

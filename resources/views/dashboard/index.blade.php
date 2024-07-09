@@ -21,6 +21,10 @@
                         <h1 class="text-lg font-semibold text-center">Grafik batang data tamu per bulan pada tahun ini </h1>
                     </div>
                 </div>
+                <div class="lg:w-3/4 flex mx-auto">
+                    <button id="downloadPdfTamu" class="btn btn-primary bg-[#7D0A0A] text-white px-5 py-3 rounded-md">Download
+                        PDF</button>
+                </div>
                 <div class="card-body flex w-3/4 mx-auto">
                     <canvas id="tamuBulanChart" width="400" height="200"></canvas>
                 </div>
@@ -34,7 +38,7 @@
                     </div>
                 </div>
                 <div class="container w-full px-20  mx-auto">
-                    <form action="{{ route('dashboard.index') }}" method="GET">
+                    <form action="{{ route('dashboard.index') }}" class="flex space-x-10"  method="GET">
                         <!-- Form untuk filter bulan -->
                         <label for="month">Pilih Bulan:</label>
                         <select name="month" id="month">
@@ -43,8 +47,16 @@
                                     {{ $month }}</option>
                             @endforeach
                         </select>
-                        <button class="px-4 py-2 bg-blue-600" type="submit">Filter</button>
+                        <div class="flex space-x-5">
+                            <button class="px-4 py-2 bg-blue-600" type="submit">Filter</button>
+                            <div class="">
+                                <button id="downloadPdfTarget" class="btn btn-primary bg-[#7D0A0A] text-white px-5 py-3 rounded-md">Download
+                                    PDF</button>
+                            </div>
+                        </div>
+
                     </form>
+
                     <canvas id="tamuChart"></canvas>
                 </div>
             </div>
@@ -54,17 +66,18 @@
                     <div class="bg-[#EAD196] w-full rounded-lg p-5">
                         <h1 class="text-lg font-semibold text-center">Grafik batang jumlah data surat masuk per bulan pada tahun
                             ini </h1>
+
                     </div>
                 </div>
+                <div class="lg:w-3/4 flex mx-auto">
+                    <button id="downloadPdfSurat" class="btn btn-primary bg-[#7D0A0A] text-white px-5 py-3 rounded-md">Download
+                        PDF</button>
+                </div>
+
                 <div class="card-body flex w-3/4 mx-auto">
                     <canvas id="suratChart" width="400" height="200"></canvas>
                 </div>
             </div>
-
-
-
-
-
 
             <script>
                 document.addEventListener('DOMContentLoaded', function() {
@@ -104,6 +117,24 @@
                             }
                         }
                     });
+                });
+                document.getElementById('downloadPdfSurat').addEventListener('click', function() {
+                    var canvas = document.getElementById('suratChart');
+                    var imgData = canvas.toDataURL('image/png');
+
+                    var xhr = new XMLHttpRequest();
+                    xhr.open('POST', '{{ route('saveChartImage') }}', true);
+                    xhr.setRequestHeader('Content-Type', 'application/json');
+                    xhr.setRequestHeader('X-CSRF-TOKEN', '{{ csrf_token() }}');
+                    xhr.send(JSON.stringify({
+                        image: imgData
+                    }));
+
+                    xhr.onload = function() {
+                        if (xhr.status === 200) {
+                            window.location.href = '{{ route('downloadPdfWithChart') }}';
+                        }
+                    };
                 });
             </script>
 
@@ -146,6 +177,24 @@
                         }
                     });
                 });
+                document.getElementById('downloadPdfTamu').addEventListener('click', function() {
+                    var canvas = document.getElementById('tamuBulanChart');
+                    var imgData = canvas.toDataURL('image/png');
+
+                    var xhr = new XMLHttpRequest();
+                    xhr.open('POST', '{{ route('saveTamuChartImage') }}', true);
+                    xhr.setRequestHeader('Content-Type', 'application/json');
+                    xhr.setRequestHeader('X-CSRF-TOKEN', '{{ csrf_token() }}');
+                    xhr.send(JSON.stringify({
+                        image: imgData
+                    }));
+
+                    xhr.onload = function() {
+                        if (xhr.status === 200) {
+                            window.location.href = '{{ route('downloadTamuPdfWithChart') }}';
+                        }
+                    };
+                });
             </script>
 
             <script>
@@ -178,6 +227,24 @@
                             }
                         }
                     });
+                });
+                document.getElementById('downloadPdfTarget').addEventListener('click', function() {
+                    var canvas = document.getElementById('tamuChart');
+                    var imgData = canvas.toDataURL('image/png');
+
+                    var xhr = new XMLHttpRequest();
+                    xhr.open('POST', '{{ route('saveTargetChartImage') }}', true);
+                    xhr.setRequestHeader('Content-Type', 'application/json');
+                    xhr.setRequestHeader('X-CSRF-TOKEN', '{{ csrf_token() }}');
+                    xhr.send(JSON.stringify({
+                        image: imgData
+                    }));
+
+                    xhr.onload = function() {
+                        if (xhr.status === 200) {
+                            window.location.href = '{{ route('downloadTargetPdfWithChart') }}';
+                        }
+                    };
                 });
             </script>
         @endguest
@@ -239,7 +306,8 @@
                     <p>
                         Mengirim surat permohonan kini lebih mudah dengan SIBUTA. Anda dapat mengirim surat elektronik
                         kepada pihak yang berkepentingan langsung melalui platform kami. Pihak yang berkepentingan akan
-                        menerima notifikasi dan dapat mem-validasi surat Anda melalui WhatsApp atau email. Dengan SIBUTA Anda juga dapat mengirimkan surat secara online.
+                        menerima notifikasi dan dapat mem-validasi surat Anda melalui WhatsApp atau email. Dengan SIBUTA
+                        Anda juga dapat mengirimkan surat secara online.
                     </p>
                 </div>
                 <div class="py-5">
@@ -278,7 +346,8 @@
                     </svg>
 
                 </h1>
-                <a href="mailto:novitasaripalembang16@gmail.com" class="text-sm w-fit h-fit">novitasaripalembang16@gmail.com</h1>
+                <a href="mailto:novitasaripalembang16@gmail.com" class="text-sm w-fit h-fit">novitasaripalembang16@gmail.com
+                    </h1>
             </div>
             <div class="flex items-center space-x-3">
                 <h1>
@@ -358,7 +427,8 @@
             </div>
             <div class="flex items-center space-x-3">
                 <h1>
-                    <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#A98F03">
+                    <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+                        stroke="#A98F03">
                         <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
                         <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
                         <g id="SVGRepo_iconCarrier">

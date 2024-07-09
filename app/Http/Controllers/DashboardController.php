@@ -5,18 +5,18 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Tamu;
 use App\Models\Surat;
+use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Support\Facades\Storage;
+
 
 class DashboardController extends Controller
 {
     public function index(Request $request)
     {
-        // Mendapatkan bulan yang dipilih dari request, default ke bulan saat ini
         $selectedMonth = $request->input('month', date('n'));
 
-        // Array untuk memetakan bulan numerik ke nama bulan dalam bahasa Indonesia
         $months = $this->getMonths();
 
-        // Mendapatkan data chart berdasarkan bulan yang dipilih
         $chartData = $this->getTamuChartData($selectedMonth);
         $suratData = $this->getSuratData();
         $tamuData = $this->getTamuData();
@@ -35,7 +35,7 @@ class DashboardController extends Controller
 
         foreach ($suratData as $data) {
             $month = $data->month;
-            $bulan = $bulanLabels[$month - 0]; // Menggunakan indeks array yang benar
+            $bulan = $bulanLabels[$month - 0];
             $suratChartData[$bulan] = $data->count;
         }
 
@@ -53,7 +53,7 @@ class DashboardController extends Controller
 
         foreach ($tamuData as $data) {
             $month = $data->month;
-            $bulan = $bulanLabels[$month - 0]; // Menggunakan indeks array yang benar
+            $bulan = $bulanLabels[$month - 0];
             $tamuChartData[$bulan] = $data->count;
         }
 
@@ -78,10 +78,64 @@ class DashboardController extends Controller
 
         $chartData = [];
         foreach ($tamuData as $data) {
-            $target = $data->target_tamu;
+            $target = $data->pegawai->nama;
             $chartData[$target] = $data->count;
         }
 
         return $chartData;
+    }
+
+    public function saveChartImage(Request $request)
+    {
+        $image = $request->input('image');
+        $image = str_replace('data:image/png;base64,', '', $image);
+        $image = str_replace(' ', '+', $image);
+        $imageName = 'chart.png';
+        Storage::disk('public')->put($imageName, base64_decode($image));
+
+        return response()->json(['status' => 'success']);
+    }
+
+    public function downloadPdfWithChart()
+    {
+        $imagePath = storage_path('app/public/chartSurat.png');
+        $pdf = PDF::loadView('dashboard.printChartSurat', compact('imagePath'));
+        $pdf->setPaper('A4', 'Landscape');
+        return $pdf->stream('Grafik Surat.pdf');
+    }
+    public function saveTamuChartImage(Request $request)
+    {
+        $image = $request->input('image');
+        $image = str_replace('data:image/png;base64,', '', $image);
+        $image = str_replace(' ', '+', $image);
+        $imageName = 'chartTamu.png';
+        Storage::disk('public')->put($imageName, base64_decode($image));
+
+        return response()->json(['status' => 'success']);
+    }
+    public function downloadTamuPdfWithChart()
+    {
+        $imagePath = storage_path('app/public/chartTamu.png');
+        $pdf = PDF::loadView('dashboard.printChartTamu', compact('imagePath'));
+        $pdf->setPaper('A4', 'Landscape');
+        return $pdf->stream('Grafik Surat.pdf');
+    }
+
+    public function saveTargetChartImage(Request $request)
+    {
+        $image = $request->input('image');
+        $image = str_replace('data:image/png;base64,', '', $image);
+        $image = str_replace(' ', '+', $image);
+        $imageName = 'chartTarget.png';
+        Storage::disk('public')->put($imageName, base64_decode($image));
+
+        return response()->json(['status' => 'success']);
+    }
+    public function downloadTargetPdfWithChart()
+    {
+        $imagePath = storage_path('app/public/chartTarget.png');
+        $pdf = PDF::loadView('dashboard.printChartTarget', compact('imagePath'));
+        $pdf->setPaper('A4', 'Landscape');
+        return $pdf->stream('Grafik Surat.pdf');
     }
 }

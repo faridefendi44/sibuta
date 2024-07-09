@@ -30,12 +30,21 @@ Route::get('login',[AuthController::class, 'index'])->name('login');
 Route::get('getPegawai',[TamuController::class, 'showData'])->name('getPegawai');
 Route::post('actionlogin', [AuthController::class, 'actionlogin'])->name('actionlogin');
 Route::get('actionlogout', [AuthController::class, 'actionlogout'])->name('actionlogout');
-
+Route::post('/save-chart-image', [DashboardController::class, 'saveChartImage'])->name('saveChartImage');
+Route::post('/save-tamu-chart-image', [DashboardController::class, 'saveTamuChartImage'])->name('saveTamuChartImage');
+Route::post('/save-target-chart-image', [DashboardController::class, 'saveTargetChartImage'])->name('saveTargetChartImage');
 
 Route::prefix('laporan')->group(function () {
+    Route::get('chart-surat', [DashboardController::class, 'downloadPdfWithChart'])->name('downloadPdfWithChart');
+    Route::get('chart-tamu', [DashboardController::class, 'downloadTamuPdfWithChart'])->name('downloadTamuPdfWithChart');
+    Route::get('chart-target', [DashboardController::class, 'downloadTargetPdfWithChart'])->name('downloadTargetPdfWithChart');
     Route::prefix('surat')->group(function () {
         Route::get('', [LaporanController::class, 'surat'])->name('laporanSurat.index');
-        Route::get('download-pdf-surat', [LaporanController::class, 'downloadPdf'])->name('suratDownload.index');
+        Route::get('download-pdf-surat', [LaporanController::class, 'downloadSuratPdf'])->name('suratDownload.index');
+    });
+    Route::prefix('tamu')->group(function () {
+        Route::get('', [LaporanController::class, 'tamu'])->name('laporanTamu.index');
+        Route::get('download-pdf-tamu', [LaporanController::class, 'downloadTamuPdf'])->name('tamuDownload.index');
     });
 
 });

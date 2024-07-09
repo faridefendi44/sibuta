@@ -5,6 +5,8 @@ use App\Http\Controllers\TamuController;
 use App\Http\Controllers\SuratController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\LaporanController;
+use App\Http\Controllers\PegawaiController;
 
 
 /*
@@ -18,17 +20,36 @@ use App\Http\Controllers\DashboardController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
-Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
+Route::get('/', [DashboardController::class, 'index'])->name('dashboard.index');
 
 Route::get('login',[AuthController::class, 'index'])->name('login');
 Route::get('getPegawai',[TamuController::class, 'showData'])->name('getPegawai');
 Route::post('actionlogin', [AuthController::class, 'actionlogin'])->name('actionlogin');
 Route::get('actionlogout', [AuthController::class, 'actionlogout'])->name('actionlogout');
 
+
+Route::prefix('laporan')->group(function () {
+    Route::prefix('surat')->group(function () {
+        Route::get('', [LaporanController::class, 'surat'])->name('laporanSurat.index');
+        Route::get('download-pdf-surat', [LaporanController::class, 'downloadPdf'])->name('suratDownload.index');
+    });
+
+});
+Route::prefix('pegawai')->group(function () {
+    Route::get('', [PegawaiController::class, 'index'])->name('pegawai.index');
+    Route::get('/create', [PegawaiController::class, 'create'])->name('pegawai.create');
+    Route::get('/search', [PegawaiController::class, 'search'])->name('pegawai.search');
+    Route::post('/store', [PegawaiController::class, 'store'])->name('pegawai.store');
+    Route::get('/detail/{id}', [PegawaiController::class, 'show'])->name('pegawai.show');
+    Route::get('/edit/{id}', [PegawaiController::class, 'edit'])->name('pegawai.edit');
+    Route::put('/update/{id}', [PegawaiController::class, 'update'])->name('pegawai.update');
+    Route::post('/delete/{id}', [PegawaiController::class, 'delete'])->name('pegawai.delete');
+
+});
 Route::prefix('tamu')->group(function () {
     Route::get('', [TamuController::class, 'index'])->name('tamu.index');
     Route::get('/create', [TamuController::class, 'create'])->name('tamu.create');

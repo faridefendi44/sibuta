@@ -7,7 +7,7 @@
                 <h1 class="lg:text-xl   font-semibold  py-10">
                     Data Tamu
                 </h1>
-                <div class="lg:w-1/2 space-y-5 py-10">
+                <div class="lg:w-3/4 space-y-5 py-10">
                     <div class="grid md:grid-cols-2 justify-center gap-x-20 ">
                         <h1 class="font-semibold">Nama</h1>
                         <h1 class="flex md:text-left text-center"><span class="hidden md:block">:</span>
@@ -35,7 +35,7 @@
                     <div class="grid md:grid-cols-2 justify-center gap-x-20">
                         <h1 class="font-semibold">Tamu yang ingin ditemui</h1>
                         <h1 class="flex md:text-left text-center"><span class="hidden md:block">:</span>
-                            {{ $tamu->target_tamu }}
+                            {{ $tamu->pegawai->nama}} - {{$tamu->pegawai->jabatan}}
                         </h1>
                     </div>
                     <div class="grid md:grid-cols-2 justify-center gap-x-20">

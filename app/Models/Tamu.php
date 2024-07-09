@@ -28,4 +28,7 @@ class Tamu extends Model
 
         return $number;
     }
+    public function pegawai(){
+        return $this->belongsTo(Pegawai::class, 'target_tamu', 'id');
+    }
 }

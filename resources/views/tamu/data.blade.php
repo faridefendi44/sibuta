@@ -65,7 +65,7 @@
                             <tr class="bg-[#D9D9D9] border-b    ">
                                 <th scope="row"
                                     class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                    {{ $loop->iteration }}
+                                    {{ $loop->iteration + ($tamus->currentPage() - 1) * $tamus->perPage() }}                                </th>
                                 </th>
                                 <td class="px-6 py-4">
                                     {{ $data->nama }}
@@ -272,6 +272,10 @@
                         @endforeach
                     </tbody>
                 </table>
+
+                <div class="py-10 px-3">
+                    {{ $tamus->links() }}
+                </div>
             </div>
         </div>
 

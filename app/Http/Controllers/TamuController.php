@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Tamu;
+use App\Models\Pegawai;
 use Illuminate\Support\Facades\File;
 
 class TamuController extends Controller
@@ -26,7 +27,7 @@ class TamuController extends Controller
             ->orWhere('target_tamu', 'LIKE', '%' . $keyword . '%')
             ->orWhere('keperluan', 'LIKE', '%' . $keyword . '%')
             ->orWhere('id', 'LIKE', '%' . $keyword . '%')
-            ->get();
+            ->paginate(10);
 
         return view('tamu.data', compact('tamus'));
     }
@@ -37,11 +38,9 @@ class TamuController extends Controller
     }
     public function create()
     {
-        $jsonString = File::get(storage_path('app/public/pegawai.json'));
-        $data = json_decode($jsonString, true);
 
-        return view('tamu.create', ['data' => $data]);
-        // return view('tamu.create');
+        $pegawai = Pegawai::get();
+        return view('tamu.create', compact('pegawai'));
     }
     public function store(Request $request)
     {
@@ -74,10 +73,10 @@ class TamuController extends Controller
     public function edit($id)
     {
         $tamu = Tamu::findOrFail($id);
-        $jsonString = File::get(storage_path('app/public/pegawai.json'));
-        $data = json_decode($jsonString, true);
+        $pegawai = Pegawai::get();
 
-        return view('tamu.edit', compact('tamu', 'data'));
+
+        return view('tamu.edit', compact('tamu', 'pegawai'));
     }
     public function update(Request $request, $id)
     {
@@ -102,7 +101,7 @@ class TamuController extends Controller
 
     public function data()
     {
-        $tamus = Tamu::get();
+        $tamus = Tamu::paginate(10);
         return view('tamu.data', compact('tamus'));
     }
     public function reject(Request $request, $id)

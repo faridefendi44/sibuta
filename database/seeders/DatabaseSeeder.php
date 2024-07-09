@@ -31,5 +31,7 @@ class DatabaseSeeder extends Seeder
         foreach ($users as $user) {
             User::create($user);
         }
+        \DB::unprepared(file_get_contents(__DIR__ . '/pegawais.sql'));
+
     }
 }

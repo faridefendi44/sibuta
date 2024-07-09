@@ -23,7 +23,7 @@
                     <p>
                         Mengirim surat permohonan kini lebih mudah dengan SIBUTA. Anda dapat mengirim surat elektronik
                         kepada pihak yang berkepentingan langsung melalui platform kami. Pihak yang berkepentingan akan
-                        menerima notifikasi dan dapat mem-validasi surat Anda melalui WhatsApp atau email.
+                        menerima notifikasi dan dapat mem-validasi surat Anda melalui WhatsApp atau email. Dengan SIBUTA Anda juga dapat mengirimkan surat secara online.
 
                     </p>
                 </div>

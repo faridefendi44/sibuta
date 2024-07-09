@@ -22,7 +22,7 @@ class SuratController extends Controller
             ->orWhere('no_wa', 'LIKE', '%' . $keyword . '%')
             ->orWhere('perihal', 'LIKE', '%' . $keyword . '%')
             ->orWhere('id', 'LIKE', '%' . $keyword . '%')
-            ->get();
+            ->paginate(10);
 
         return view('surat.data', compact('surats'));
     }
@@ -121,7 +121,7 @@ class SuratController extends Controller
 
     public function data()
     {
-        $surats = Surat::get();
+        $surats = Surat::paginate(10);;
         return view('surat.data', compact('surats'));
     }
     public function reject(Request $request, $id)

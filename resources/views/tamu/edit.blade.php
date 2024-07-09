@@ -72,10 +72,10 @@
                             <select id="countries" name="target_tamu" required
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                                 <option disabled>Pilih Tamu</option>
-                                <option selected value="{{ $tamu->target_tamu }}">{{ $tamu->target_tamu}}
+                                <option selected value="{{ $tamu->id }}">{{ $tamu->pegawai->nama}} - {{ $tamu->pegawai->jabatan}}
                                 </option>
-                                @foreach ($data as $pegawai)
-                                    <option value="{{ $pegawai['nama'] }}">{{ $pegawai['nama'] }} - {{ $pegawai['jabatan'] }}
+                                @foreach ($pegawai as $data)
+                                    <option value="{{ $data->id }}">{{ $data->nama }} - {{ $data->jabatan }}
                                     </option>
                                 @endforeach
 

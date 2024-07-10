@@ -20,6 +20,7 @@ class SuratController extends Controller
         $surats = Surat::where('pengirim', 'LIKE', '%' . $keyword . '%')
             ->orWhere('email', 'LIKE', '%' . $keyword . '%')
             ->orWhere('no_wa', 'LIKE', '%' . $keyword . '%')
+            ->orWhere('no_surat', 'LIKE', '%' . $keyword . '%')
             ->orWhere('perihal', 'LIKE', '%' . $keyword . '%')
             ->orWhere('id', 'LIKE', '%' . $keyword . '%')
             ->paginate(10);
@@ -46,6 +47,7 @@ class SuratController extends Controller
             'pengirim' => 'required|string|max:255',
             'email' => 'required|string|email|max:255',
             'no_wa' => 'required|string|max:15',
+            'no_surat' => 'required|string|max:15',
             'perihal' => 'required|string|max:255',
             'asal_surat' => 'required|string|max:255',
             'lampiran.*' => 'required|file|mimes:pdf,doc,docx,jpg,png',
@@ -68,6 +70,7 @@ class SuratController extends Controller
         $surat->email = $validatedData['email'];
         $surat->asal_surat = $validatedData['asal_surat'];
         $surat->no_wa = $validatedData['no_wa'];
+        $surat->no_surat = $validatedData['no_surat'];
         $surat->perihal = $validatedData['perihal'];
         $surat->lampiran = $lampiran;
         $surat->save();
@@ -90,6 +93,7 @@ class SuratController extends Controller
             'pengirim' => 'required|string|max:255',
             'email' => 'required|string|email|max:255',
             'no_wa' => 'required|string|max:15',
+            'no_surat' => 'required|string|max:15',
             'perihal' => 'required|string|max:255',
             'asal_surat' => 'required|string|max:255',
             'lampiran.*' => 'nullable|file|mimes:pdf,doc,docx,jpg,png',
@@ -113,6 +117,7 @@ class SuratController extends Controller
         $surat->email = $validatedData['email'];
         $surat->asal_surat = $validatedData['asal_surat'];
         $surat->no_wa = $validatedData['no_wa'];
+        $surat->no_surat = $validatedData['no_surat'];
         $surat->perihal = $validatedData['perihal'];
         $surat->lampiran = $lampiran;
         $surat->save();
@@ -133,6 +138,7 @@ class SuratController extends Controller
         $surat->save();
 
         $no_wa = $surat->no_wa;
+        $no_surat = $surat->no_surat;
         $pengirim = $surat->pengirim;
         $email = $surat->email;
         $asal_surat = $surat->asal_surat;
@@ -145,6 +151,7 @@ class SuratController extends Controller
         Pengirim: $pengirim\n
         Email: $email\n
         No WA: $no_wa\n
+        No. Surat: $no_surat\n
         Asal Surat: $asal_surat\n
         Perihal: $perihal\n
         Lampiran: $lampiran\n
@@ -159,7 +166,7 @@ class SuratController extends Controller
         $surat = Surat::findOrFail($id);
         $surat->status = "approved";
         $surat->save();
-
+        $no_surat = $surat->no_surat;
         $no_wa = $surat->no_wa;
         $pengirim = $surat->pengirim;
         $email = $surat->email;
@@ -172,6 +179,7 @@ class SuratController extends Controller
         Pengirim: $pengirim\n
         Email: $email\n
         No WA: $no_wa\n
+        No. Surat: $no_surat\n
         Asal Surat: $asal_surat\n
         Perihal: $perihal\n
         Status: $status\n

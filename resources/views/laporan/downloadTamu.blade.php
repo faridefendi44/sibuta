@@ -55,8 +55,8 @@
 
         <h3>BUKU TAMU</h3>
         <h3>KEJAKSAAN NEGERI SIJUNJUNG</h3>
+        <h3>Periode: {{ $start_date }} - {{ $end_date }}</h3>
     </div>
-    {{-- <h3>{{ $start_date }} - {{ $end_date }}</h3> --}}
 
 </div>
 

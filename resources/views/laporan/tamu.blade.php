@@ -63,9 +63,7 @@
                                 <th scope="col" class="px-6 py-3">
                                     Keperluan
                                 </th>
-                                <th scope="col" class="px-6 py-3">
-                                    Tanda Tangan
-                                </th>
+
                             </tr>
                         </thead>
 
@@ -95,9 +93,6 @@
                                     </td>
                                     <td class="px-6 py-4">
                                        {{$data->keperluan}}
-                                    </td>
-                                    <td>
-
                                     </td>
                                 </tr>
 

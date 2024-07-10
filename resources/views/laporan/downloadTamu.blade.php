@@ -53,7 +53,7 @@
     <hr>
     <div style="text-align: center;">
 
-        <h3>BUKU TAMU</h3>
+        <h3>REKAPAN DATA TAMU</h3>
         <h3>KEJAKSAAN NEGERI SIJUNJUNG</h3>
         <h3>Periode: {{ $start_date }} - {{ $end_date }}</h3>
     </div>
@@ -64,28 +64,27 @@
     <thead>
         <tr>
             <th>No</th>
+            <th>Tanggal</th>
             <th>Nama</th>
             <th>Asal Instansi</th>
-            <th>Tanggal</th>
             <th>No Telepon</th>
             <th>Pihak Yang Ingin Ditemui</th>
             <th>Keperluan</th>
-            <th>Tanda Tangan</th>
         </tr>
     </thead>
     <tbody>
         @foreach ($tamus as $item)
             <tr>
                 <td>{{ $loop->iteration }}</td>
+                <td>{{ $item->tanggal_bertamu }} <br> pukul: {{$item->jam_bertamu}}</td>
                 <td>{{ $item->nama }}</td>
                 <td>{{ $item->asal_instansi }}</td>
-                <td>{{ $item->tanggal_bertamu }} <br> pukul: {{$item->jam_bertamu}}</td>
                 <td>{{ $item->no_wa }}</td>
                 <td>{{ $item->pegawai->nama }} - {{ $item->pegawai->jabatan }}</td>
                 <td>
                     {{ $item->keperluan }}
                 </td>
-                <td></td>
+
             </tr>
         @endforeach
     </tbody>

@@ -85,6 +85,25 @@
                         </div>
                     </div>
                     <div class="md:flex  md:space-x-5  md:justify-between my-auto items-center md:w-full">
+                        <label for="">Nomor Surat</label>
+                        <div class="relative md:w-3/5 ">
+                            <input id='test'  autocomplete="off" type="text" name="no_surat" value="{{$surat->no_surat}}"
+                                placeholder="Nomor Surat"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                required>
+                        </div>
+                    </div>
+                    <div class="md:flex  md:space-x-5  md:justify-between my-auto items-center md:w-full">
+                        <label for="">Tanggal Surat</label>
+                        <div class="relative md:w-3/5 ">
+                            <input id='test' datepicker  autocomplete="off" type="text" name="tanggal_surat"
+                            value="{{$surat->tanggal_surat}}"
+                                placeholder="Nomor Surat"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                required>
+                        </div>
+                    </div>
+                    <div class="md:flex  md:space-x-5  md:justify-between my-auto items-center md:w-full">
                         <label for="">Asal Surat</label>
                         <div class="relative md:w-3/5 ">
                             <input value="{{$surat->asal_surat}}" id='test' autocomplete="off" type="text" name="asal_surat"
@@ -109,8 +128,7 @@
                                 class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
                                 aria-describedby="file_input_help" type="file"
                                 accept="application/pdf,image/png,image/jpeg,image/jpg" multiple>
-                            <p class="mt-1 text-sm text-gray-500 dark:text-gray-300" id="file_input_help">PDF, JPEG, JPG,
-                                PNG
+                            <p class="mt-1 text-sm text-gray-500 dark:text-gray-300" id="file_input_help">PDF
                             </p>
                             <p id="files-area" class="">
                                 <span id="filesList">
@@ -163,5 +181,14 @@
                 });
             });
         });
+    </script>
+     <script>
+        const datapicker = document.getElementById('test');
+        new Datepicker(datapicker, {
+            todayHighlight: true,
+            minDate: new Date()
+        }); <
+        <
+        script src = "https://unpkg.com/flowbite@1.5.3/dist/flowbite.js" >
     </script>
 @endsection

@@ -50,16 +50,19 @@
                                 Nama Pengirim
                             </th>
                             <th scope="col" class="px-6 py-3">
-                                Nomor Surat
-                            </th>
-                            <th scope="col" class="px-6 py-3">
                                 Asal Surat
                             </th>
                             <th scope="col" class="px-6 py-3">
-                                No. Telepon
+                                Tanggal Surat
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Nomor Surat
                             </th>
                             <th scope="col" class="px-6 py-3">
                                 Perihal Surat
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Tanggal Masuk Surat
                             </th>
                             <th scope="col" class="px-6 py-3">
                                 Lampiran
@@ -78,16 +81,21 @@
                                     {{ $data->pengirim }}
                                 </td>
                                 <td class="px-6 py-4">
-                                    {{ $data->no_surat }}
-                                </td>
-                                <td class="px-6 py-4">
                                     {{ $data->asal_surat }}
                                 </td>
                                 <td class="px-6 py-4">
-                                    {{ $data->no_wa }}
+                                    {{ $data->tanggal_surat }}
+
                                 </td>
                                 <td class="px-6 py-4">
+                                    {{ $data->no_surat }}
+                                </td>
+
+                                <td class="px-6 py-4">
                                     {{ $data->perihal }}
+                                </td>
+                                <td class="px-6 py-4">
+                                    {{ \Carbon\Carbon::parse($data->created_at)->setTimezone('Asia/Jakarta')->locale('id')->isoFormat('D MMMM YYYY HH:mm:ss') }}
                                 </td>
                                 <td class="px-6 py-4">
                                     @foreach (explode(', ', $data->lampiran) as $lampiran)

@@ -33,6 +33,12 @@
                         </h1>
                     </div>
                     <div class="grid md:grid-cols-2 justify-center gap-x-20">
+                        <h1 class="font-semibold">Tanggal Surat</h1>
+                        <h1 class="flex md:text-left text-center"><span class="hidden md:block">:</span>
+                            {{ $surat->tanggal_surat }}
+                        </h1>
+                    </div>
+                    <div class="grid md:grid-cols-2 justify-center gap-x-20">
                         <h1 class="font-semibold">Asal Surat</h1>
                         <h1 class="flex md:text-left text-center"><span class="hidden md:block">:</span>
                             {{ $surat->asal_surat }}
@@ -42,6 +48,12 @@
                         <h1 class="font-semibold">Perihal</h1>
                         <h1 class="flex md:text-left text-center"><span class="hidden md:block">:</span>
                             {{ $surat->perihal }}
+                        </h1>
+                    </div>
+                    <div class="grid md:grid-cols-2 justify-center gap-x-20">
+                        <h1 class="font-semibold">Perihal</h1>
+                        <h1 class="flex md:text-left text-center"><span class="hidden md:block">:</span>
+                            {{ \Carbon\Carbon::parse($surat->created_at)->setTimezone('Asia/Jakarta')->locale('id')->isoFormat('D MMMM YYYY HH:mm:ss') }}
                         </h1>
                     </div>
                     <div class="grid md:grid-cols-2 justify-center gap-x-20">

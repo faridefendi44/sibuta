@@ -9,7 +9,7 @@ class Surat extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'pengirim', 'email','no_surat', 'no_wa', 'perihal', 'lampiran', 'asal_surat', 'status', 'catatan'
+        'pengirim', 'email','no_surat', 'tanggal_surat','no_wa', 'perihal', 'lampiran', 'asal_surat', 'status', 'catatan'
     ];
 
     public function setNoWaAttribute($value)

@@ -55,8 +55,8 @@
 
         <h3>BUKU SURAT MASUK</h3>
         <h3>KEJAKSAAN NEGERI SIJUNJUNG</h3>
+        <h3>Periode: {{ $start_date }} - {{ $end_date }}</h3>
     </div>
-    {{-- <h3>{{ $start_date }} - {{ $end_date }}</h3> --}}
 
 </div>
 
@@ -65,11 +65,11 @@
         <tr>
             <th>No</th>
             <th>Nama</th>
+            <th>Nomor Surat</th>
             <th>Asal Surat</th>
             <th>No. Telepon</th>
             <th>Perihal Surat</th>
             <th>Lampiran</th>
-            <th>Tanda Tangan</th>
         </tr>
     </thead>
     <tbody>
@@ -77,6 +77,7 @@
             <tr>
                 <td>{{ $loop->iteration }}</td>
                 <td>{{ $item->pengirim }}</td>
+                <td>{{ $item->no_surat }}</td>
                 <td>{{ $item->asal_surat }}</td>
                 <td>{{ $item->no_wa }}</td>
                 <td>{{ $item->perihal }}</td>
@@ -85,7 +86,6 @@
                         <a target="_blank" href="{{ $lampiran }}">{{ basename($lampiran) }}</a><br>
                     @endforeach
                 </td>
-                <td>{{ $item->tanda_tangan }}</td>
             </tr>
         @endforeach
     </tbody>

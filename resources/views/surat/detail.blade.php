@@ -27,6 +27,12 @@
                         </h1>
                     </div>
                     <div class="grid md:grid-cols-2 justify-center gap-x-20">
+                        <h1 class="font-semibold">Nomor Surat</h1>
+                        <h1 class="flex md:text-left text-center"><span class="hidden md:block">:</span>
+                            {{ $surat->no_surat }}
+                        </h1>
+                    </div>
+                    <div class="grid md:grid-cols-2 justify-center gap-x-20">
                         <h1 class="font-semibold">Asal Surat</h1>
                         <h1 class="flex md:text-left text-center"><span class="hidden md:block">:</span>
                             {{ $surat->asal_surat }}

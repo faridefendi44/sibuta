@@ -48,6 +48,9 @@
                                 Nama Pengirim
                             </th>
                             <th scope="col" class="px-6 py-3">
+                                Nomor Surat
+                            </th>
+                            <th scope="col" class="px-6 py-3">
                                 Perihal Surat
                             </th>
                             <th scope="col" class="px-6 py-3">
@@ -71,6 +74,9 @@
                                 </th>
                                 <td class="px-6 py-4">
                                     {{ $data->pengirim }}
+                                </td>
+                                <td class="px-6 py-4">
+                                    {{ $data->no_surat }}
                                 </td>
                                 <td class="px-6 py-4">
                                     {{ $data->perihal }}

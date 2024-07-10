@@ -119,6 +119,7 @@
                     </a>
                 </li>
             @endif
+            @if(Auth::check())
             <li class="relative">
                 <a class="parent -ml-2 p-4 w-auto h-12 mt-2 flex items-center rounded-md duration-300 cursor-pointer font-semibold shadow relative bg-transparent hover:bg-[#7D0A0A] text-white"
                     onclick="toggleDropdown('laporanDropdown')">
@@ -140,6 +141,8 @@
                         Surat Masuk</a>
                 </div>
             </li>
+            @endif
+
             <li>
                 <a href="{{ Auth::check() ? url('actionlogout') : url('login') }}"
                     class="parent {{ Request::path() == 'logout' || Request::path() == 'login' ? 'bg-[#7D0A0A]' : '' }} hover:bg-[#7D0A0A] -ml-2 p-4 w-auto h-12 mt-2 flex items-center rounded-md duration-300 cursor-pointer top-10 font-semibold shadow relative">

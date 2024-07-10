@@ -17,7 +17,7 @@
                     </p>
                 </div>
                 <div class="py-5">
-                    <a href="/dashboard"
+                    <a href="/"
                         class="bg-[#7D0A0A] w-fit text-white rounded-lg mx-auto flex px-5 py-2">Oke</a>
                 </div>
             </div>

@@ -58,7 +58,6 @@ class PegawaiController extends Controller
         $validatedData = $request->validate([
             'nama' => 'required|string|max:255',
             'jabatan' => 'required|string|max:255',
-
         ]);
 
         $pegawai = Pegawai::findOrFail($id);

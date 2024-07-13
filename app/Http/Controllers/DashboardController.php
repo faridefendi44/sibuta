@@ -90,7 +90,7 @@ class DashboardController extends Controller
         $image = $request->input('image');
         $image = str_replace('data:image/png;base64,', '', $image);
         $image = str_replace(' ', '+', $image);
-        $imageName = 'chart.png';
+        $imageName = 'chartSurat.png';
         Storage::disk('public')->put($imageName, base64_decode($image));
 
         return response()->json(['status' => 'success']);

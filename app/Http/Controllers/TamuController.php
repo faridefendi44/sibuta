@@ -116,7 +116,7 @@ class TamuController extends Controller
         $nama = $tamu->nama;
         $email = $tamu->email;
         $asal_instansi = $tamu->asal_instansi;
-        $target_tamu = $tamu->target_tamu;
+        $target_tamu = $tamu->pegawai->nama;
         $tanggal_bertamu = $tamu->tanggal_bertamu;
         $jam_bertamu = $tamu->jam_bertamu;
         $keperluan = $tamu->keperluan;
@@ -148,7 +148,7 @@ class TamuController extends Controller
         $nama = $tamu->nama;
         $email = $tamu->email;
         $asal_instansi = $tamu->asal_instansi;
-        $target_tamu = $tamu->target_tamu;
+        $target_tamu = $tamu->pegawai->nama;
         $tanggal_bertamu = $tamu->tanggal_bertamu;
         $jam_bertamu = $tamu->jam_bertamu;
         $keperluan = $tamu->keperluan;

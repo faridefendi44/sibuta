@@ -26,7 +26,11 @@
                         PDF</button>
                 </div>
                 <div class="card-body flex w-3/4 mx-auto">
+<<<<<<< HEAD
                     <canvas id="tamuBulanChart"  height="100"></canvas>
+=======
+                    <canvas id="tamuBulanChart" width="400" height="200"></canvas>
+>>>>>>> 3181596aabf591e21a07c2a23854d796f44ef3f0
                 </div>
             </div>
 
@@ -57,7 +61,11 @@
 
                     </form>
 
+<<<<<<< HEAD
                     <canvas height="100" id="tamuChart"></canvas>
+=======
+                    <canvas id="tamuChart"></canvas>
+>>>>>>> 3181596aabf591e21a07c2a23854d796f44ef3f0
                 </div>
             </div>
 
@@ -75,7 +83,11 @@
                 </div>
 
                 <div class="card-body flex w-3/4 mx-auto">
+<<<<<<< HEAD
                     <canvas id="suratChart" width="400" height="100"></canvas>
+=======
+                    <canvas id="suratChart" width="400" height="200"></canvas>
+>>>>>>> 3181596aabf591e21a07c2a23854d796f44ef3f0
                 </div>
             </div>
 
@@ -336,7 +348,11 @@
             </div>
         </div>
         <div class="lg:ml-10 pt-5 pb-20 space-y-3">
+<<<<<<< HEAD
 
+=======
+           
+>>>>>>> 3181596aabf591e21a07c2a23854d796f44ef3f0
             <div class="flex items-center space-x-3">
                 <h1>
                     <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"

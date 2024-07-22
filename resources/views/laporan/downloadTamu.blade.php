@@ -70,8 +70,11 @@
             <th>No Telepon</th>
             <th>Pihak Yang Ingin Ditemui</th>
             <th>Keperluan</th>
+<<<<<<< HEAD
             <th>Status Konfirmasi</th>
             <th>Ket</th>
+=======
+>>>>>>> 3181596aabf591e21a07c2a23854d796f44ef3f0
         </tr>
     </thead>
     <tbody>
@@ -86,6 +89,7 @@
                 <td>
                     {{ $item->keperluan }}
                 </td>
+<<<<<<< HEAD
                 <td class="px-6 py-4">
                     @if($item->status == 'approved')
                     <p>Diterima</p>
@@ -96,6 +100,8 @@
                     @endif
                 </td>
                 <td>{{$item->catatan}}</td>
+=======
+>>>>>>> 3181596aabf591e21a07c2a23854d796f44ef3f0
 
             </tr>
         @endforeach

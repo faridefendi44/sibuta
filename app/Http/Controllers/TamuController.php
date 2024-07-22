@@ -59,9 +59,9 @@ class TamuController extends Controller
 
         $tamu = Tamu::create($validatedData);
 
-        $sid    = env("TWILIO_SID");
-        $token  = env("TWILIO_TOKEN");
-        $number = env("TWILIO_FROM");
+        $sid    = getenv("TWILIO_SID");
+        $token  = getenv("TWILIO_TOKEN");
+        $number = getenv("TWILIO_FROM");
         $twilio = new Client($sid, $token);
         $message = $twilio->messages
             ->create(

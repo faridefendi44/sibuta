@@ -63,6 +63,9 @@
                                 <th scope="col" class="px-6 py-3">
                                     Keperluan
                                 </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Status Konfirmasi
+                                </th>
 
                             </tr>
                         </thead>
@@ -93,6 +96,15 @@
                                     </td>
                                     <td class="px-6 py-4">
                                        {{$data->keperluan}}
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        @if($data->status == 'approved')
+                                        <p>Diterima</p>
+                                        @elseif($data->status == 'rejected')
+                                        <p>Ditolak</p>
+                                        @else
+                                        <p>Proses</p>
+                                        @endif
                                     </td>
                                 </tr>
 

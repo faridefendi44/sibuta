@@ -83,7 +83,7 @@ class LaporanController extends Controller
         $tamus = $query->get();
 
         $pdf = PDF::loadView('laporan.downloadTamu', compact('tamus', 'start_date', 'end_date'));
-        $pdf->setPaper('A4', 'Portrait');
+        $pdf->setPaper('A4', 'Landscape');
         return $pdf->stream('Data Tamu.pdf');
     }
 }

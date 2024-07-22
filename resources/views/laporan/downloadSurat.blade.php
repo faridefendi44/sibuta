@@ -41,6 +41,66 @@
         .header-table td {
             border: none;
         }
+
+        .signature {
+            page-break-inside: avoid;
+            text-align: right;
+            margin-top: 10px;
+        }
+
+        .signature .first {
+            margin-right: 136px;
+        }
+
+        .signature .name {
+            font-weight: 700;
+            text-decoration: underline;
+            margin-right: 75px;
+        }
+
+        .signature .position {
+            font-weight: 700;
+        }
+
+        .signature .nip {
+            margin-right: 25px;
+        }
+
+        @media print {
+            body {
+                width: 100%;
+                height: 100%;
+            }
+
+            .page-break {
+                page-break-before: always;
+            }
+
+            .header {
+                page-break-after: avoid;
+            }
+
+            table {
+                page-break-inside: auto;
+                width: 100%;
+                margin: auto;
+            }
+
+            tr {
+                page-break-inside: avoid;
+                page-break-after: auto;
+            }
+
+            td,
+            th {
+                page-break-inside: avoid;
+            }
+
+            .signature {
+                page-break-inside: avoid;
+                page-break-after: always;
+            }
+        }
     </style>
 </head>
 
@@ -64,12 +124,10 @@
         </table>
         <hr>
         <div style="text-align: center;">
-
             <h3>REKAPAN SURAT MASUK</h3>
             <h3>KEJAKSAAN NEGERI SIJUNJUNG</h3>
             <h3>Periode: {{ $start_date }} - {{ $end_date }}</h3>
         </div>
-
     </div>
 
     <table>
@@ -87,24 +145,33 @@
         </thead>
         <tbody>
             @foreach ($surats as $item)
-                <tr>
-                    <td>{{ $loop->iteration }}</td>
-                    <td>{{ $item->pengirim }}</td>
-                    <td>{{ $item->asal_surat }}</td>
-                    <td> {{ $item->tanggal_surat }}</td>
-                    <td>{{ $item->no_surat }}</td>
-                    <td>{{ $item->perihal }}</td>
-                    <td>{{ \Carbon\Carbon::parse($item->created_at)->setTimezone('Asia/Jakarta')->locale('id')->isoFormat('D MMMM YYYY HH:mm:ss') }}
-                    </td>
-                    <td>
-                        @foreach (explode(', ', $item->lampiran) as $lampiran)
-                            <a target="_blank" href="{{ $lampiran }}">{{ basename($lampiran) }}</a><br>
-                        @endforeach
-                    </td>
-                </tr>
+            <tr>
+                <td>{{ $loop->iteration }}</td>
+                <td>{{ $item->pengirim }}</td>
+                <td>{{ $item->asal_surat }}</td>
+                <td> {{ $item->tanggal_surat }}</td>
+                <td>{{ $item->no_surat }}</td>
+                <td>{{ $item->perihal }}</td>
+                <td>{{ \Carbon\Carbon::parse($item->created_at)->setTimezone('Asia/Jakarta')->locale('id')->isoFormat('D MMMM YYYY HH:mm:ss') }}
+                </td>
+                <td>
+                    @foreach (explode(', ', $item->lampiran) as $lampiran)
+                    <a target="_blank" href="{{ $lampiran }}">{{ basename($lampiran) }}</a><br>
+                    @endforeach
+                </td>
+            </tr>
             @endforeach
         </tbody>
     </table>
+
+    <div class="signature">
+        <p class="first">Mengetahui</p>
+        <p class="position">Kepala Sub Bagian Pembinaan</p>
+        <div style="margin-top: 50px;" class="mt-12">
+            <p class="name">(Amrul Afdal, S.H.)</p>
+            <p class="nip">NIP. 19686024 200812 1001</p>
+        </div>
+    </div>
 
 </body>
 

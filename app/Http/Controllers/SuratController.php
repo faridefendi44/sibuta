@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Surat;
 use Illuminate\Support\Facades\Storage;
+use Twilio\Rest\Client;
+
 
 class SuratController extends Controller
 {
@@ -77,6 +79,28 @@ class SuratController extends Controller
         $surat->perihal = $validatedData['perihal'];
         $surat->lampiran = $lampiran;
         $surat->save();
+
+        $sid    = getenv("TWILIO_SID");
+        $token  = getenv("TWILIO_TOKEN");
+        $number = getenv("TWILIO_FROM");
+
+        $twilio = new Client($sid, $token);
+        $message = $twilio->messages
+            ->create(
+                "whatsapp:+6282257626491",
+                array(
+                    "from" => $number,
+                    "body" => "
+Notifikasi Pengajuan Surat \n
+Pengirim: " . $validatedData['pengirim'] . "\n
+Asal Surat: " . $validatedData['asal_surat'] . "\n
+Tanggal Surat: " . $validatedData['tanggal_surat'] . "\n
+Nomor Surat: " . $validatedData['no_surat'] . "\n
+Perihal: " . $validatedData['perihal'] . "\n
+Lampiran: " . $lampiran. "\n
+"
+                )
+            );
 
         if (auth()->check()) {
             return redirect()->route('surat.data');

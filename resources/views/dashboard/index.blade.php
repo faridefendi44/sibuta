@@ -27,7 +27,6 @@
                 </div>
                 <div class="card-body flex w-3/4 mx-auto">
                     <canvas id="tamuBulanChart"  height="100"></canvas>
-                    <canvas id="tamuBulanChart" width="400" height="200"></canvas>
                 </div>
             </div>
 
@@ -57,9 +56,7 @@
                         </div>
 
                     </form>
-
                     <canvas height="100" id="tamuChart"></canvas>
-                    <canvas id="tamuChart"></canvas>
                 </div>
             </div>
 
@@ -77,8 +74,7 @@
                 </div>
 
                 <div class="card-body flex w-3/4 mx-auto">
-                    <canvas id="suratChart" width="400" height="100"></canvas>
-                    <canvas id="suratChart" width="400" height="200"></canvas>
+                    <canvas id="suratChart" height="100"></canvas>
                 </div>
             </div>
 
@@ -114,8 +110,9 @@
                                     beginAtZero: true,
                                     title: {
                                         display: true,
-                                        text: 'Jumlah Surat Masuk'
-                                    }
+                                        text: 'Jumlah Surat Per bulan'
+                                    },
+
                                 }
                             }
                         }
@@ -225,7 +222,7 @@
                                 },
                                 y: {
                                     stacked: true,
-                                    beginAtZero: true
+                                    beginAtZero: true,
                                 }
                             }
                         }

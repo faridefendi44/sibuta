@@ -68,7 +68,17 @@ class TamuController extends Controller
                 "whatsapp:+6282257626491",
                 array(
                     "from" => $number,
-                    "body" => "Your appointment is coming up on July 21 at 3PM"
+                    "body" => "
+Notifikasi Pengajuan Tamu \n
+Pemohon: " . $validatedData['nama'] . "\n
+Asal Instansi: " . $validatedData['asal_instansi'] . "\n
+Tanggal Bertamu: " . $validatedData['tanggal_bertamu'] . "\n
+Jam Bertamu: " . $validatedData['jam_bertamu'] . "\n
+Email: " . $validatedData['email'] . "\n
+Nomor WA: " . $validatedData['no_wa'] . "\n
+Target Tamu: " . $validatedData['target_tamu'] . "\n
+Keperluan: " . $validatedData['keperluan'] . "
+"
                 )
             );
         if (auth()->check()) {

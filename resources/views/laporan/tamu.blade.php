@@ -66,6 +66,9 @@
                                 <th scope="col" class="px-6 py-3">
                                     Status Konfirmasi
                                 </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Ket
+                                </th>
 
                             </tr>
                         </thead>
@@ -105,6 +108,9 @@
                                         @else
                                         <p>Proses</p>
                                         @endif
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        {{$data->catatan}}
                                     </td>
                                 </tr>
 

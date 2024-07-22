@@ -58,9 +58,24 @@ class TamuController extends Controller
         ]);
 
         $tamu = Tamu::create($validatedData);
+
+        $sid    = env("TWILIO_SID");
+        $token  = env("TWILIO_TOKEN");
+        $number = env("TWILIO_FROM");
+        $twilio = new Client($sid, $token);
+        $message = $twilio->messages
+            ->create(
+                "whatsapp:+6282257626491",
+                array(
+                    "from" => $number,
+                    "body" => "Your appointment is coming up on July 21 at 3PM"
+                )
+            );
         if (auth()->check()) {
             return redirect()->route('tamu.data');
         }
+
+
 
         return view('components.succes');
     }

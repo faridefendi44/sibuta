@@ -58,6 +58,8 @@ class TamuController extends Controller
         ]);
 
         $tamu = Tamu::create($validatedData);
+        $pegawai = Pegawai::find($validatedData['target_tamu']);
+        $targetTamu = $pegawai ? $pegawai->nama : 'Nama pegawai tidak ditemukan';
 
         $sid    = getenv("TWILIO_SID");
         $token  = getenv("TWILIO_TOKEN");
@@ -76,7 +78,7 @@ Tanggal Bertamu: " . $validatedData['tanggal_bertamu'] . "\n
 Jam Bertamu: " . $validatedData['jam_bertamu'] . "\n
 Email: " . $validatedData['email'] . "\n
 Nomor WA: " . $validatedData['no_wa'] . "\n
-Target Tamu: " . $validatedData['target_tamu'] . "\n
+Target Tamu: " . $targetTamu . "\n
 Keperluan: " . $validatedData['keperluan'] . "
 "
                 )

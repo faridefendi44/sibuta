@@ -66,6 +66,10 @@
             margin-right: 25px;
         }
 
+        .break-word {
+            word-break: break-word;
+        }
+
         @media print {
             body {
                 width: 100%;
@@ -137,10 +141,10 @@
                 <th>Nama Pengirim</th>
                 <th>Asal Surat</th>
                 <th>Tanggal Surat</th>
-                <th>Nomor Surat</th>
+                <th style="width: 80px;" class="break-word">Nomor Surat</th>
                 <th>Perihal Surat</th>
                 <th>Tanggal Masuk Surat</th>
-                <th>Lampiran</th>
+                <th style="width: 150px;" class="break-word">Lampiran</th>
             </tr>
         </thead>
         <tbody>
@@ -149,12 +153,11 @@
                 <td>{{ $loop->iteration }}</td>
                 <td>{{ $item->pengirim }}</td>
                 <td>{{ $item->asal_surat }}</td>
-                <td> {{ $item->tanggal_surat }}</td>
-                <td>{{ $item->no_surat }}</td>
+                <td>{{ $item->tanggal_surat }}</td>
+                <td class="break-word">{{ $item->no_surat }}</td>
                 <td>{{ $item->perihal }}</td>
-                <td>{{ \Carbon\Carbon::parse($item->created_at)->setTimezone('Asia/Jakarta')->locale('id')->isoFormat('D MMMM YYYY HH:mm:ss') }}
-                </td>
-                <td>
+                <td>{{ \Carbon\Carbon::parse($item->created_at)->setTimezone('Asia/Jakarta')->locale('id')->isoFormat('D MMMM YYYY HH:mm:ss') }}</td>
+                <td  class="break-word">
                     @foreach (explode(', ', $item->lampiran) as $lampiran)
                     <a target="_blank" href="{{ $lampiran }}">{{ basename($lampiran) }}</a><br>
                     @endforeach

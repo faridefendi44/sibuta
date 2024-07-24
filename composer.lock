@@ -5821,7 +5821,6 @@
             "time": "2023-12-08T13:03:43+00:00"
         },
         {
-<<<<<<< HEAD
             "name": "twilio/sdk",
             "version": "8.2.2",
             "source": {
@@ -5875,8 +5874,6 @@
             "time": "2024-07-02T09:32:09+00:00"
         },
         {
-=======
->>>>>>> 3181596aabf591e21a07c2a23854d796f44ef3f0
             "name": "vlucas/phpdotenv",
             "version": "v5.6.1",
             "source": {

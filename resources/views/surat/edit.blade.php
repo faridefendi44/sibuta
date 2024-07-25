@@ -96,7 +96,7 @@
                     <div class="md:flex  md:space-x-5  md:justify-between my-auto items-center md:w-full">
                         <label for="">Tanggal Surat</label>
                         <div class="relative md:w-3/5 ">
-                            <input id='test' datepicker  autocomplete="off" type="text" name="tanggal_surat"
+                            <input  autocomplete="off" type="date" name="tanggal_surat"
                             value="{{$surat->tanggal_surat}}"
                                 placeholder="Nomor Surat"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"

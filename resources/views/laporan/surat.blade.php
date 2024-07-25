@@ -1,18 +1,21 @@
 @extends('layouts.master')
 @section('content')
     <div class="lg:w-[90%]  px-2 mt-10  mx-auto space-y-10">
+
+        
+
         <form id="filterForm" class="flex space-x-10" method="GET" action="{{ route('laporanSurat.index') }}">
             <div class="">
                 <label for="start_date">Mulai Tanggal:</label>
-                <input type="date" id="start_date" name="start_date">
+                <input type="date" id="start_date" name="start_date" value="{{ old('start_date', request()->get('start_date')) }}">
             </div>
             <div class="">
                 <label for="end_date">Sampai Tanggal:</label>
-                <input type="date" id="end_date" name="end_date">
+                <input type="date" id="end_date" name="end_date" value="{{ old('end_date', request()->get('end_date')) }}">
             </div>
             <input type="hidden" id="isPrint" name="isPrint" value="0">
             <div class="flex items-center space-x-5">
-                <button  class="bg-[#7D0A0A] text-white py-2 px-5">Filter</button>
+                <button class="bg-[#7D0A0A] text-white py-2 px-5">Filter</button>
                 <button type="button" id="printButton" class="flex bg-[#EAD196] py-2 px-5">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M18 17.25H19.125C19.6218 17.2485 20.0979 17.0505 20.4492 16.6992C20.8005 16.3479 20.9985 15.8718 21 15.375V7.875C20.9985 7.37818 20.8005 6.90212 20.4492 6.55081C20.0979 6.1995 19.6218 6.00148 19.125 6H4.875C4.37818 6.00148 3.90212 6.1995 3.55081 6.55081C3.1995 6.90212 3.00148 7.37818 3 7.875V15.375C3.00148 15.8718 3.1995 16.3479 3.55081 16.6992C3.90212 17.0505 4.37818 17.2485 4.875 17.25H6" stroke="#7D0A0A" stroke-width="1.5" stroke-linejoin="round"/>
@@ -24,6 +27,7 @@
                 </button>
             </div>
         </form>
+
 
         <script>
             document.getElementById('printButton').addEventListener('click', function() {

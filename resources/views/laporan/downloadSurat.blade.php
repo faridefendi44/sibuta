@@ -130,7 +130,7 @@
         <div style="text-align: center;">
             <h3>REKAPAN SURAT MASUK</h3>
             <h3>KEJAKSAAN NEGERI SIJUNJUNG</h3>
-            <h3>Periode: {{ $start_date }} - {{ $end_date }}</h3>
+            <h3>Periode: {{ \Carbon\Carbon::parse($start_date)->format('d-m-Y') }} - {{ \Carbon\Carbon::parse($end_date)->format('d-m-Y') }}</h3>
         </div>
     </div>
 

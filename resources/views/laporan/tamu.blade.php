@@ -14,7 +14,7 @@
             <input type="hidden" id="isPrint" name="isPrint" value="0">
             <div class="flex items-center space-x-5">
                 <button class="bg-[#7D0A0A] text-white py-2 px-5">Filter</button>
-                <button type="button" id="printButton" class="flex bg-[#EAD196] py-2 px-5">
+                <button  id="printButton" class="flex bg-[#EAD196] py-2 px-5">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M18 17.25H19.125C19.6218 17.2485 20.0979 17.0505 20.4492 16.6992C20.8005 16.3479 20.9985 15.8718 21 15.375V7.875C20.9985 7.37818 20.8005 6.90212 20.4492 6.55081C20.0979 6.1995 19.6218 6.00148 19.125 6H4.875C4.37818 6.00148 3.90212 6.1995 3.55081 6.55081C3.1995 6.90212 3.00148 7.37818 3 7.875V15.375C3.00148 15.8718 3.1995 16.3479 3.55081 16.6992C3.90212 17.0505 4.37818 17.2485 4.875 17.25H6" stroke="#7D0A0A" stroke-width="1.5" stroke-linejoin="round"/>
                         <path d="M16.86 11.25H7.14C6.5104 11.25 6 11.7604 6 12.39V19.86C6 20.4896 6.5104 21 7.14 21H16.86C17.4896 21 18 20.4896 18 19.86V12.39C18 11.7604 17.4896 11.25 16.86 11.25Z" stroke="#7D0A0A" stroke-width="1.5" stroke-linejoin="round"/>

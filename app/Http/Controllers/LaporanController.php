@@ -6,24 +6,29 @@ use Illuminate\Http\Request;
 use App\Models\Surat;
 use App\Models\Tamu;
 use Barryvdh\DomPDF\Facade\Pdf;
+    use Carbon\Carbon;
+
 
 class LaporanController extends Controller
 {
 
-    public function surat(Request $request)
-    {
-        $query = Surat::query();
 
-        if ($request->has('start_date') && $request->has('end_date')) {
-            $start_date = $request->input('start_date');
-            $end_date = $request->input('end_date');
-            $query->whereBetween('created_at', [$start_date, $end_date]);
-        }
+public function surat(Request $request)
+{
+    $query = Surat::query();
 
-        $surats = $query->paginate(10);
+    if ($request->has('start_date') && $request->has('end_date')) {
+        $start_date = Carbon::parse($request->input('start_date'))->startOfDay();
+        $end_date = Carbon::parse($request->input('end_date'))->endOfDay(); // Mengatur akhir hari pada tanggal akhir
 
-        return view('laporan.surat', compact('surats'));
+        $query->whereBetween('created_at', [$start_date, $end_date]);
     }
+
+    $surats = $query->paginate(10);
+
+    return view('laporan.surat', compact('surats'));
+}
+
 
     public function Tamu(Request $request)
     {
@@ -43,8 +48,8 @@ class LaporanController extends Controller
     public function downloadSuratPdf(Request $request)
     {
         $query = Surat::query();
-        $start_date = $request->input('start_date');
-        $end_date = $request->input('end_date');
+        $start_date = Carbon::parse($request->input('start_date'))->startOfDay();
+        $end_date = Carbon::parse($request->input('end_date'))->endOfDay(); 
 
         if ($start_date && $end_date) {
             $query->whereBetween('created_at', [$start_date, $end_date]);

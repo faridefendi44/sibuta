@@ -1,9 +1,6 @@
 @extends('layouts.master')
 @section('content')
     <div class="lg:w-[90%]  px-2 mt-10  mx-auto space-y-10">
-
-        
-
         <form id="filterForm" class="flex space-x-10" method="GET" action="{{ route('laporanSurat.index') }}">
             <div class="">
                 <label for="start_date">Mulai Tanggal:</label>

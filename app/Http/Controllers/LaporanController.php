@@ -17,7 +17,7 @@ class LaporanController extends Controller
         if ($request->has('start_date') && $request->has('end_date')) {
             $start_date = $request->input('start_date');
             $end_date = $request->input('end_date');
-            $query->whereBetween('tanggal_surat', [$start_date, $end_date]);
+            $query->whereBetween('created_at', [$start_date, $end_date]);
         }
 
         $surats = $query->paginate(10);
@@ -50,7 +50,7 @@ class LaporanController extends Controller
             if ($request->has('start_date') && $request->has('end_date')) {
                 $start_date = $request->input('start_date');
                 $end_date = $request->input('end_date');
-                $query->whereBetween('tanggal_surat', [$start_date, $end_date]);
+                $query->whereBetween('created_at', [$start_date, $end_date]);
             }
         }
         $start_date = $request->input('start_date');

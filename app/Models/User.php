@@ -22,7 +22,15 @@ class User extends Authenticatable
         'email',
         'password',
     ];
-    
+
+    public function hasRole($role){
+        if ($this->role == $role) {
+            return true;
+        }
+
+        return false;
+    }
+
     /**
      * The attributes that should be hidden for serialization.
      *

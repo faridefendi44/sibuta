@@ -1,5 +1,7 @@
+<title>Edit Data Permohonan Surat</title>
 @extends('layouts.master')
 @section('content')
+
     <style>
         .hidden {
             display: none;
@@ -138,7 +140,7 @@
                         </div>
                     </div>
                     <div class="">
-                        <button class="bg-[#7D0A0A] text-white rounded-lg px-8 py-2">Submit form pengiriman surat</button>
+                        <button class="bg-[#7D0A0A] text-white rounded-lg px-8 py-2">Submit</button>
                     </div>
                 </form>
             </div>

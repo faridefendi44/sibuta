@@ -1,3 +1,4 @@
+<title>Edit Data Pegawai</title>
 @extends('layouts.master')
 @section('content')
 

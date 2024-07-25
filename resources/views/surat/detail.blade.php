@@ -1,3 +1,4 @@
+<title>Detail Data Permohonan Surat</title>
 @extends('layouts.master')
 @section('content')
     <div class="">
@@ -51,7 +52,7 @@
                         </h1>
                     </div>
                     <div class="grid md:grid-cols-2 justify-center gap-x-20">
-                        <h1 class="font-semibold">Perihal</h1>
+                        <h1 class="font-semibold">Tanggal Masuk Surat</h1>
                         <h1 class="flex md:text-left text-center"><span class="hidden md:block">:</span>
                             {{ \Carbon\Carbon::parse($surat->created_at)->setTimezone('Asia/Jakarta')->locale('id')->isoFormat('D MMMM YYYY HH:mm:ss') }}
                         </h1>

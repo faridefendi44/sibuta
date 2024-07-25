@@ -1,3 +1,4 @@
+<title>Detail Data Permohonan Bertamu</title>
 @extends('layouts.master')
 @section('content')
     <div class="">

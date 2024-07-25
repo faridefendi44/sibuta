@@ -114,7 +114,7 @@
         <table class="header-table">
             <tr>
                 <td style="width: 20%;">
-                    <img src="img/logo.png" alt="Logo">
+                    <img src="img/logo kejaksaan.png" alt="Logo">
                 </td>
                 <td style="width: 80%;">
                     <h3>KEJAKSAAN REPUBLIK INDONESIA</h3>
@@ -130,21 +130,22 @@
         <div style="text-align: center;">
             <h3>REKAPAN SURAT MASUK</h3>
             <h3>KEJAKSAAN NEGERI SIJUNJUNG</h3>
-            <h3>Periode: {{ \Carbon\Carbon::parse($start_date)->format('d-m-Y') }} - {{ \Carbon\Carbon::parse($end_date)->format('d-m-Y') }}</h3>
+            <h3>Periode: {{ \Carbon\Carbon::parse($start_date)->locale('id')->isoFormat('D MMMM YYYY') }} s/d {{ \Carbon\Carbon::parse($end_date)->locale('id')->isoFormat('D MMMM YYYY') }}</h3>
         </div>
     </div>
 
+    <br>
     <table>
         <thead>
             <tr>
-                <th>No</th>
-                <th>Nama Pengirim</th>
-                <th>Asal Surat</th>
-                <th>Tanggal Surat</th>
-                <th style="width: 80px;" class="break-word">Nomor Surat</th>
-                <th>Perihal Surat</th>
-                <th>Tanggal Masuk Surat</th>
-                <th style="width: 150px;" class="break-word">Lampiran</th>
+                <th style="width: 5%">No</th>
+                <th style="width: 10%">Nama Pengirim</th>
+                <th style="width: 15%">Asal Surat</th>
+                <th style="width: 15%">Tanggal Surat</th>
+                <th style="width: 15%">Nomor Surat</th>
+                <th style="width: 10%">Perihal Surat</th>
+                <th style="width: 10%">Tanggal Masuk Surat</th>
+                <th style="width: 20px">Lampiran</th>
             </tr>
         </thead>
         <tbody>

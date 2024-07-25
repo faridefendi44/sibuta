@@ -1,3 +1,4 @@
+<title>Pengajuan Permohonan Bertamu</title>
 @extends('layouts.master')
 @section('content')
     <style>

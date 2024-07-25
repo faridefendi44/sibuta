@@ -1,3 +1,4 @@
+<title>Laporan Data Permohonan Bertamu</title>
 @extends('layouts.master')
 @section('content')
     <div class="lg:w-[90%]  px-2 mt-10  mx-auto space-y-10">

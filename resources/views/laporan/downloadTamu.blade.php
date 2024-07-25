@@ -110,7 +110,7 @@
         <table class="header-table">
             <tr>
                 <td style="width: 10%;">
-                    <img src="img/logo.png" alt="Logo">
+                    <img src="img/logo kejaksaan.png" alt="Logo">
                 </td>
                 <td class="border-2" style="width: 90%;">
                     <h3>KEJAKSAAN REPUBLIK INDONESIA</h3>
@@ -123,25 +123,27 @@
             </tr>
         </table>
         <hr>
+
         <div style="text-align: center;">
             <h3>REKAPAN DATA TAMU</h3>
             <h3>KEJAKSAAN NEGERI SIJUNJUNG</h3>
-            <h3>Periode: {{ $start_date }} - {{ $end_date }}</h3>
+            <h3>Periode: {{ \Carbon\Carbon::parse($start_date)->locale('id')->isoFormat('D MMMM YYYY') }} s/d {{ \Carbon\Carbon::parse($end_date)->locale('id')->isoFormat('D MMMM YYYY') }}</h3>
         </div>
     </div>
 
+    <br>
     <table>
         <thead>
             <tr>
-                <th class="">No</th>
-                <th class="">Tanggal</th>
-                <th class="">Nama</th>
-                <th class="">Asal Instansi</th>
-                <th class="">No Telepon</th>
-                <th style="width: 244px;">Pihak Yang Ingin Ditemui</th>
-                <th class="">Keperluan</th>
-                <th class="">Status Konfirmasi</th>
-                <th class="w-60">Ket</th>
+                <th class="" style="width: 5%">No</th>
+                <th class="" style="width: 10%">Tanggal</th>
+                <th class="" style="width: 15%">Nama</th>
+                <th class="" style="width: 10%">Asal Instansi</th>
+                <th class="" style="width: 12%">No Telepon</th>
+                <th style="width: 20%">Pihak Yang Ingin Ditemui</th>
+                <th class="" style="width: 10%">Keperluan</th>
+                <th class="" style="width: 8%">Status Konfirmasi</th>
+                <th class="" style="width: 10%">Ket</th>
             </tr>
         </thead>
         <tbody>
@@ -172,7 +174,7 @@
     </table>
 
     <div class="page-break"></div>
-
+    <br>
     <div class="signature">
         <p class="first">Mengetahui</p>
         <p class="position">Kepala Sub Bagian Pembinaan</p>

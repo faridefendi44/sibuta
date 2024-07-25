@@ -1,3 +1,4 @@
+<title>Tambah Data Permohoann Bertamu</title>
 @extends('layouts.master')
 @section('content')
     <style>
@@ -10,7 +11,7 @@
 
             <div class="bg-[#EAD196] lg:w-4/5  rounded-lg p-5">
                 <h1 class="lg:text-xl font-semibold text-center py-10">Silakan isi form dibawah ini untuk melakukan
-                    pengiriman surat</h1>
+                    permohonan bertamu</h1>
                 <form action="{{ route('tamu.store') }}" method="POST" class="lg:w-4/5 justify-center mx-auto space-y-6">
                     @csrf
 

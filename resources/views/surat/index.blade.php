@@ -1,3 +1,4 @@
+<title>Permohonan Surat</title>
 @extends('layouts.master')
 @section('content')
     <style>

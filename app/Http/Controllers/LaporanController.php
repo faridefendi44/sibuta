@@ -43,18 +43,12 @@ class LaporanController extends Controller
     public function downloadSuratPdf(Request $request)
     {
         $query = Surat::query();
-        $start_date = null;
-        $end_date = null;
-
-        if ($request->input('isPrint') != 1) {
-            if ($request->has('start_date') && $request->has('end_date')) {
-                $start_date = $request->input('start_date');
-                $end_date = $request->input('end_date');
-                $query->whereBetween('created_at', [$start_date, $end_date]);
-            }
-        }
         $start_date = $request->input('start_date');
         $end_date = $request->input('end_date');
+
+        if ($start_date && $end_date) {
+            $query->whereBetween('created_at', [$start_date, $end_date]);
+        }
 
         $surats = $query->get();
 
@@ -63,27 +57,22 @@ class LaporanController extends Controller
         return $pdf->stream('Data Surat.pdf');
     }
 
+
     public function downloadTamuPdf(Request $request)
-    {
+{
+    $query = Tamu::query();
+    $start_date = $request->input('start_date');
+    $end_date = $request->input('end_date');
 
-        $query = Tamu::query();
-        $start_date = null;
-        $end_date = null;
-
-        if ($request->input('isPrint') != 1) {
-            if ($request->has('start_date') && $request->has('end_date')) {
-                $start_date = $request->input('start_date');
-                $end_date = $request->input('end_date');
-                $query->whereBetween('tanggal_bertamu', [$start_date, $end_date]);
-            }
-        }
-        $start_date = $request->input('start_date');
-        $end_date = $request->input('end_date');
-
-        $tamus = $query->get();
-
-        $pdf = PDF::loadView('laporan.downloadTamu', compact('tamus', 'start_date', 'end_date'));
-        $pdf->setPaper('A4', 'Landscape');
-        return $pdf->stream('Data Tamu.pdf');
+    if ($start_date && $end_date) {
+        $query->whereBetween('tanggal_bertamu', [$start_date, $end_date]);
     }
+
+    $tamus = $query->get();
+
+    $pdf = PDF::loadView('laporan.downloadTamu', compact('tamus', 'start_date', 'end_date'));
+    $pdf->setPaper('A4', 'Landscape');
+    return $pdf->stream('Data Tamu.pdf');
+}
+
 }

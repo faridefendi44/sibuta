@@ -1,5 +1,5 @@
-<title>Edit Data Permohonan Bertamu</title>
 @extends('layouts.master')
+@section('title', 'Edit Data Permohonan Bertamu')
 @section('content')
 
     <div class="">

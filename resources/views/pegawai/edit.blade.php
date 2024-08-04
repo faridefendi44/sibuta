@@ -1,5 +1,5 @@
-<title>Edit Data Pegawai</title>
 @extends('layouts.master')
+@section('title', 'Edit Data Pegawai')
 @section('content')
 
     <div class="">

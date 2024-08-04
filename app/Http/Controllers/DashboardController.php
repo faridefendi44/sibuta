@@ -70,20 +70,24 @@ class DashboardController extends Controller
     }
 
     private function getTamuChartData($selectedMonth)
-    {
-        $tamuData = Tamu::selectRaw('target_tamu, COUNT(*) as count')
-            ->whereRaw('MONTH(STR_TO_DATE(tanggal_bertamu, "%d/%m/%Y")) = ?', [$selectedMonth])
-            ->groupBy('target_tamu')
-            ->get();
+{
+    $tamuData = Tamu::with('pegawai') // Pastikan eager loading relasi pegawai
+        ->selectRaw('target_tamu, COUNT(*) as count')
+        ->whereRaw('MONTH(tanggal_bertamu) = ?', [$selectedMonth]) // Langsung gunakan MONTH tanpa STR_TO_DATE
+        ->groupBy('target_tamu')
+        ->get();
 
-        $chartData = [];
-        foreach ($tamuData as $data) {
+    $chartData = [];
+    foreach ($tamuData as $data) {
+        if ($data->pegawai) { // Pastikan pegawai tidak null
             $target = $data->pegawai->nama;
             $chartData[$target] = $data->count;
         }
-
-        return $chartData;
     }
+
+    return $chartData;
+}
+
 
     public function saveChartImage(Request $request)
     {

@@ -1,5 +1,5 @@
-<title>Edit Data Permohonan Surat</title>
 @extends('layouts.master')
+@section('title', 'Edit Data Permohonan Surat')
 @section('content')
 
     <style>

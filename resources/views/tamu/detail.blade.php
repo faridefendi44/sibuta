@@ -1,5 +1,5 @@
-<title>Detail Data Permohonan Bertamu</title>
 @extends('layouts.master')
+@section('title', 'Detail Data Permohonan Bertamu')
 @section('content')
     <div class="">
         <div class="lg:flex  lg:space-x-10 justify-center py-10 px-5 mx-auto ">

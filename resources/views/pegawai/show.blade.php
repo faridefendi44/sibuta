@@ -1,5 +1,5 @@
-<title>Detail Data Pegawai</title>
 @extends('layouts.master')
+@section('title', 'Detail Data Pegawai')
 @section('content')
     <div class="">
         <div class="lg:flex  lg:space-x-10 justify-center py-10 px-5 mx-auto ">

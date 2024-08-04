@@ -1,4 +1,3 @@
-<title>Sistem Informasi Buku Tamu Kejaksaan Negeri Sijunjung</title>
 @extends('layouts.master')
 @section('content')
     <style>

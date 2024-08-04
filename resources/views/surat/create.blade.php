@@ -1,5 +1,6 @@
-<title>Tambah Data Permohonan Surat</title>
 @extends('layouts.master')
+@section('title', 'Tambah Data Permohonan Surat')
+
 @section('content')
     <style>
         .hidden {

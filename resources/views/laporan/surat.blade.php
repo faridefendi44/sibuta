@@ -1,5 +1,6 @@
-<title>Laporan Data Pengiriman Surat</title>
 @extends('layouts.master')
+@section('title', 'Laporan Data Pengiriman Surat')
+
 @section('content')
     <div class="lg:w-[90%]  px-2 mt-10  mx-auto space-y-10">
 
